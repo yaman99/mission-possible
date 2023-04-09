@@ -1,0 +1,70 @@
+<ng-container>
+  <div class="row g-5 g-xl-12">
+    <div class="col-xl-4">
+      <a href="#" class="card bg-success hoverable card-xl-stretch mb-5 mb-xl-8">
+        <div class="card-body">
+          <span
+            class="svg-icon svg-icon-white svg-icon-3x ms-n1"
+            [inlineSVG]="'./assets/media/icons/duotune/abstract/abs015.svg'"
+          >
+          </span>
+          <div class="text-white fw-bold fs-1 mb-2 mt-5">
+            <ng-container *ngIf="(loading$ | async) === false; else loading">
+              {{ (dashboard$ | async)?.totalActiveAffiliates }}
+            </ng-container>
+            <ng-template #loading>
+              <span class="spinner-border spinner-border-lg align-middle mx-2"></span>
+            </ng-template>
+            <span class="text-white fs-7 fw-semibold"> مسوق </span>
+          </div>
+          <div class="fw-semibold text-white">عدد المسوقين الفعالين</div>
+        </div>
+      </a>
+    </div>
+    <div class="col-xl-4">
+      <a href="#" class="card bg-danger hoverable card-xl-stretch mb-5 mb-xl-8">
+        <div class="card-body">
+          <span
+            class="svg-icon svg-icon-white svg-icon-3x ms-n1"
+            [inlineSVG]="'./assets/media/icons/duotune/abstract/abs015.svg'"
+          >
+          </span>
+          <div class="text-white fw-bold fs-1 mb-2 mt-5">
+            <ng-container *ngIf="(loading$ | async) === false; else loading">
+              {{ (dashboard$ | async)?.totalCanceledAffiliates }}
+            </ng-container>
+            <ng-template #loading>
+              <span class="spinner-border spinner-border-lg align-middle mx-2"></span>
+            </ng-template>
+
+            <span class="text-white fs-7 fw-semibold"> مسوق </span>
+          </div>
+          <div class="fw-semibold text-white">عدد المسوقين المستقيلين</div>
+        </div>
+      </a>
+    </div>
+    <div class="col-xl-4">
+      <a href="#" class="card bg-info hoverable card-xl-stretch mb-5 mb-xl-8">
+        <div class="card-body">
+          <span
+            class="svg-icon svg-icon-white svg-icon-3x ms-n1"
+            [inlineSVG]="'./assets/media/icons/duotune/abstract/abs015.svg'"
+          >
+          </span>
+          <div class="text-white fw-bold fs-1 mb-2 mt-5">
+            <ng-container *ngIf="(loading$ | async) === false; else loading">
+              {{ (dashboard$ | async)?.totalConversions }}
+            </ng-container>
+            <ng-template #loading>
+              <span class="spinner-border spinner-border-lg align-middle mx-2"></span>
+            </ng-template>
+            <span class="text-white fs-7 fw-semibold"> عملية شراء </span>
+          </div>
+          <div class="fw-semibold text-white">مجموع المبيعات</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</ng-container>
+
+<app-workspace-dashboard-campaigns-list></app-workspace-dashboard-campaigns-list>

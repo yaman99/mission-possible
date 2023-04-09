@@ -1,0 +1,170 @@
+<div class="row gy-5 g-xl-10">
+  <ng-container >
+    <div class="col-sm-6 col-xl-6 mb-xl-10">
+      <div class="card h-lg-100">
+        <div class="card-body d-flex justify-content-between align-items-start flex-column">
+          <div class="m-0">
+            <span [inlineSVG]="'./assets/media/icons/duotune/art/art002.svg'" class="svg-icon svg-icon-2"></span>
+          </div>
+          <div class="d-flex flex-column my-7">
+            <span class="fw-semibold fs-3x text-gray-800 lh-1 ls-n2">{{(insightsData | async)?.totalAdvertisers}}</span>
+            <div class="m-0">
+              <span class="fw-semibold fs-6 text-gray-400">مجموع المعلنين</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-6 mb-xl-10">
+      <div class="card h-lg-100">
+        <div class="card-body d-flex justify-content-between align-items-start flex-column">
+          <div class="m-0">
+            <span [inlineSVG]="'./assets/media/icons/duotune/art/art002.svg'" class="svg-icon svg-icon-2"></span>
+          </div>
+          <div class="d-flex flex-column my-7">
+            <span class="fw-semibold fs-3x text-gray-800 lh-1 ls-n2">{{(insightsData | async)?.totalPromoters}}</span>
+            <div class="m-0">
+              <span class="fw-semibold fs-6 text-gray-400">مجموع المسوقيين</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-4 mb-xl-10">
+      <div class="card h-lg-100">
+        <div class="card-body d-flex justify-content-between align-items-start flex-column">
+          <div class="m-0">
+            <span [inlineSVG]="'./assets/media/icons/duotune/art/art002.svg'" class="svg-icon svg-icon-2"></span>
+          </div>
+          <div class="d-flex flex-column my-7">
+            <span class="fw-semibold fs-3x text-gray-800 lh-1 ls-n2">{{(insightsData | async)?.paidCommissionsAmount}}</span>
+            <div class="m-0">
+              <span class="fw-semibold fs-6 text-gray-400"> العمولات المحولة </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-4 mb-xl-10">
+      <div class="card h-lg-100">
+        <div class="card-body d-flex justify-content-between align-items-start flex-column">
+          <div class="m-0">
+            <span [inlineSVG]="'./assets/media/icons/duotune/art/art002.svg'" class="svg-icon svg-icon-2"></span>
+          </div>
+          <div class="d-flex flex-column my-7">
+            <span class="fw-semibold fs-3x text-gray-800 lh-1 ls-n2">{{(insightsData | async)?.totalBalance}}</span>
+            <div class="m-0">
+              <span class="fw-semibold fs-6 text-gray-400"> الرصيد المشحون </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-4 mb-xl-10">
+      <div class="card h-lg-100">
+        <div class="card-body d-flex justify-content-between align-items-start flex-column">
+          <div class="m-0">
+            <span [inlineSVG]="'./assets/media/icons/duotune/art/art002.svg'" class="svg-icon svg-icon-2"></span>
+          </div>
+          <div class="d-flex flex-column my-7">
+            <span class="fw-semibold fs-3x text-gray-800 lh-1 ls-n2">{{(insightsData | async)?.totalProfit}}</span>
+            <div class="m-0">
+              <span class="fw-semibold fs-6 text-gray-400"> صافي الأرباح </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-2 mb-xl-10">
+      <div class="card h-lg-100">
+        <div class="card-body d-flex justify-content-between align-items-start flex-column">
+          <div class="m-0">
+            <span [inlineSVG]="'./assets/media/icons/duotune/art/art002.svg'" class="svg-icon svg-icon-2"></span>
+          </div>
+          <div class="d-flex flex-column my-7">
+            <span class="fw-semibold fs-3x text-gray-800 lh-1 ls-n2">{{(insightsData | async)?.pendingCommissionsAmount}}</span>
+            <div class="m-0">
+              <span class="fw-semibold fs-6 text-gray-400">مجموع العمولات المعلقة</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-2 mb-xl-10">
+      <div class="card h-lg-100">
+        <div class="card-body d-flex justify-content-between align-items-start flex-column">
+          <div class="m-0">
+            <span [inlineSVG]="'./assets/media/icons/duotune/art/art002.svg'" class="svg-icon svg-icon-2"></span>
+          </div>
+          <div class="d-flex flex-column my-7">
+            <span class="fw-semibold fs-3x text-gray-800 lh-1 ls-n2">{{(insightsData | async)?.pendingCommissionsCount}}</span>
+            <div class="m-0">
+              <span class="fw-semibold fs-6 text-gray-400">عدد العمولات المعلقة</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-2 mb-xl-10">
+      <div class="card h-lg-100">
+        <div class="card-body d-flex justify-content-between align-items-start flex-column">
+          <div class="m-0">
+            <span [inlineSVG]="'./assets/media/icons/duotune/art/art002.svg'" class="svg-icon svg-icon-2"></span>
+          </div>
+          <div class="d-flex flex-column my-7">
+            <span class="fw-semibold fs-3x text-gray-800 lh-1 ls-n2">{{(insightsData | async)?.approvedCommissionsAmount}}</span>
+            <div class="m-0">
+              <span class="fw-semibold fs-6 text-gray-400">مجموع العمولات المحققة</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-2 mb-xl-10">
+      <div class="card h-lg-100">
+        <div class="card-body d-flex justify-content-between align-items-start flex-column">
+          <div class="m-0">
+            <span [inlineSVG]="'./assets/media/icons/duotune/art/art002.svg'" class="svg-icon svg-icon-2"></span>
+          </div>
+          <div class="d-flex flex-column my-7">
+            <span class="fw-semibold fs-3x text-gray-800 lh-1 ls-n2">{{(insightsData | async)?.approvedCommissionsCount}}</span>
+            <div class="m-0">
+              <span class="fw-semibold fs-6 text-gray-400">عدد العمولات المحققة</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-2 mb-xl-10">
+      <div class="card h-lg-100">
+        <div class="card-body d-flex justify-content-between align-items-start flex-column">
+          <div class="m-0">
+            <span [inlineSVG]="'./assets/media/icons/duotune/art/art002.svg'" class="svg-icon svg-icon-2"></span>
+          </div>
+          <div class="d-flex flex-column my-7">
+            <span class="fw-semibold fs-3x text-gray-800 lh-1 ls-n2">{{(insightsData | async)?.rejectedCommissionsAmount}}</span>
+            <div class="m-0">
+              <span class="fw-semibold fs-6 text-gray-400">مجموع العمولات المرفوضة</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-2 mb-xl-10">
+      <div class="card h-lg-100">
+        <div class="card-body d-flex justify-content-between align-items-start flex-column">
+          <div class="m-0">
+            <span [inlineSVG]="'./assets/media/icons/duotune/art/art002.svg'" class="svg-icon svg-icon-2"></span>
+          </div>
+          <div class="d-flex flex-column my-7">
+            <span class="fw-semibold fs-3x text-gray-800 lh-1 ls-n2">{{(insightsData | async)?.rejectedCommissionsCount}}</span>
+            <div class="m-0">
+              <span class="fw-semibold fs-6 text-gray-400">عدد العمولات المرفوضة</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </ng-container>
+</div>

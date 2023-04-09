@@ -1,0 +1,274 @@
+<ng-container>
+  <div class="row g-5 g-xl-12">
+    <div class="col-xl-3">
+      <a href="#" class="card bg-primary hoverable card-xl-stretch mb-5 mb-xl-8">
+        <div class="card-body">
+          <span
+            class="svg-icon svg-icon-white svg-icon-3x ms-n1"
+            [inlineSVG]="'./assets/media/icons/duotune/abstract/abs015.svg'"
+          >
+          </span>
+          <div class="text-white fw-bold fs-1 mb-2 mt-5">
+            <ng-container *ngIf="(isLoading$ | async) === false; else loading">
+              {{ (currentCampaign | async)?.overview?.totalViews }}
+            </ng-container>
+            <ng-template #loading>
+              <span class="spinner-border spinner-border-lg align-middle mx-2"></span>
+            </ng-template>
+            <span class="text-white fs-7 fw-semibold"> مشاهدة </span>
+          </div>
+          <div class="fw-semibold text-white"> مجموع المشاهدات </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-xl-3">
+      <a href="#" class="card bg-success hoverable card-xl-stretch mb-5 mb-xl-8">
+        <div class="card-body">
+          <span
+            class="svg-icon svg-icon-white svg-icon-3x ms-n1"
+            [inlineSVG]="'./assets/media/icons/duotune/abstract/abs015.svg'"
+          >
+          </span>
+          <div class="text-white fw-bold fs-1 mb-2 mt-5">
+            <ng-container *ngIf="(isLoading$ | async) === false; else loading">
+              {{ (currentCampaign | async)?.overview?.totalConversions }}
+            </ng-container>
+            <ng-template #loading>
+              <span class="spinner-border spinner-border-lg align-middle mx-2"></span>
+            </ng-template>
+            <span class="text-white fs-7 fw-semibold"> عملية شراء </span>
+          </div>
+          <div class="fw-semibold text-white"> مجموع عمليات الشراء </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-xl-3">
+      <a href="#" class="card bg-info hoverable card-xl-stretch mb-5 mb-xl-8">
+        <div class="card-body">
+          <span
+            class="svg-icon svg-icon-white svg-icon-3x ms-n1"
+            [inlineSVG]="'./assets/media/icons/duotune/abstract/abs015.svg'"
+          >
+          </span>
+          <div class="text-white fw-bold fs-1 mb-2 mt-5">
+            <ng-container *ngIf="(isLoading$ | async) === false; else loading">
+              {{ (currentCampaign | async)?.overview?.totalActiveAffiliate }}
+            </ng-container>
+            <ng-template #loading>
+              <span class="spinner-border spinner-border-lg align-middle mx-2"></span>
+            </ng-template>
+            <span class="text-white fs-7 fw-semibold"> مسوق </span>
+          </div>
+          <div class="fw-semibold text-white"> مجموع المسوقين الفعالين </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-xl-3">
+      <a href="#" class="card bg-danger hoverable card-xl-stretch mb-5 mb-xl-8">
+        <div class="card-body">
+          <span
+            class="svg-icon svg-icon-white svg-icon-3x ms-n1"
+            [inlineSVG]="'./assets/media/icons/duotune/abstract/abs015.svg'"
+          >
+          </span>
+          <div class="text-white fw-bold fs-1 mb-2 mt-5">
+            <ng-container *ngIf="(isLoading$ | async) === false; else loading">
+              {{ (currentCampaign | async)?.overview?.totalCanceledAffiliate }}
+            </ng-container>
+            <ng-template #loading>
+              <span class="spinner-border spinner-border-lg align-middle mx-2"></span>
+            </ng-template>
+            <span class="text-white fs-7 fw-semibold"> مسوق </span>
+          </div>
+          <div class="fw-semibold text-white"> مجموع المسوقين الذين خرجوا </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-lg-8">
+      <div class="card mb-5 mb-xl-10">
+        <div class="card-header border-0">
+          <div class="card-title m-0">
+            <h3 class="fw-bold m-0"> الوصف </h3>
+          </div>
+        </div>
+        <div class="card-body border-top p-9">
+          <div
+            class="scroll-y me-n5 pe-5"
+            data-kt-scroll="true"
+            data-kt-scroll-activate="{default: false, lg: true}"
+            data-kt-scroll-max-height="auto"
+            data-kt-scroll-dependencies="#kt_header, #kt_toolbar, #kt_footer, #kt_contacts_list_header"
+            data-kt-scroll-wrappers="#kt_content, #kt_contacts_list_body"
+            data-kt-scroll-stretch="#kt_contacts_list, #kt_contacts_main"
+            data-kt-scroll-offset="5px"
+            style="max-height: 265px; height: 265px"
+          >
+            <div class="d-flex flex-stack py-4">
+              <div class="fw-semibold fs-5 text-gray-600">
+                {{ (currentCampaign | async)?.description }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-xxl-4 mb-5">
+      <div class="card card-flush mb-5">
+        <div class="card-header pt-7">
+          <h3 class="card-title align-items-start flex-column">
+            <span class="card-label fw-bold text-dark">معلومات المنتج</span>
+          </h3>
+
+          <div class="card-toolbar">
+            <a
+              [href]="(currentCampaign | async)?.productUrl"
+              target="_blank"
+              class="btn btn-sm btn-light"
+              >معاينة المنتج في المتجر</a
+            >
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="border border-dashed border-gray-300 rounded px-7 py-3 mb-6">
+            <div class="d-flex flex-stack mb-3">
+              <div class="me-3">
+                <a
+                  [href]="(currentCampaign | async)?.productUrl"
+                  target="_blank"
+                  class="text-gray-800 text-hover-primary fw-bold"
+                  >{{ (currentCampaign | async)?.productName }}</a
+                >
+              </div>
+              <span class="badge badge-light-success"
+                >متجر {{ (currentCampaign | async)?.productStore }}
+              </span>
+            </div>
+
+            <div class="d-flex flex-stack">
+              <span class="text-gray-400 fw-bold"
+                >سعر المنتج:
+                {{ (currentCampaign | async)?.productPrice }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-5 mb-xl-8">
+        <div class="card-body">
+          <p class="text-dark-75 fw-semibold fs-4 mb-3"> البلدان المستهدفة </p>
+          <div class="fw-semibold text-gray-600">
+            <a
+              class="btn btn-light btn-sm btn-active-light-primary mx-1 my-1"
+              *ngFor="let country of (currentCampaign | async)?.targetCountries"
+            >
+              {{ getCountryName(country) }}
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-5 mb-xl-8">
+        <div class="card-body">
+          <p class="text-dark-75 fw-semibold fs-4 mb-3"> الأصناف </p>
+          <div class="fw-semibold text-gray-600">
+            <a
+              class="btn btn-light btn-sm btn-active-light-primary mx-1 my-1"
+              *ngFor="let category of (currentCampaign | async)?.targetCategories"
+            >
+              {{ getCategoryName(category) }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<!-- <ng-container *ngIf="currentCampaign as (currentCampaign | async)?">
+  <ng-container>
+    <div class="row g-5 g-xl-12">
+      <div class="col-lg-8">
+        <div class="card mb-5 mb-xl-10">
+          <div class="card-header border-0">
+            <div class="card-title m-0">
+              <h3 class="fw-bold m-0">Description</h3>
+            </div>
+          </div>
+          <div class="card-body border-top p-9">
+            <div
+              class="scroll-y me-n5 pe-5"
+              data-kt-scroll="true"
+              data-kt-scroll-activate="{default: false, lg: true}"
+              data-kt-scroll-max-height="auto"
+              data-kt-scroll-dependencies="#kt_header, #kt_toolbar, #kt_footer, #kt_contacts_list_header"
+              data-kt-scroll-wrappers="#kt_content, #kt_contacts_list_body"
+              data-kt-scroll-stretch="#kt_contacts_list, #kt_contacts_main"
+              data-kt-scroll-offset="5px"
+              style="max-height: 265px; height: 265px"
+            >
+              <div class="d-flex flex-stack py-4">
+                <div class="fw-semibold fs-5 text-gray-600">
+                  {{ (currentCampaign | async)?.description }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-xxl-4 mb-5">
+        <div class="card card-flush mb-5">
+          <div class="card-header pt-7">
+            <h3 class="card-title align-items-start flex-column">
+              <span class="card-label fw-bold text-dark">معلومات المنتج</span>
+            </h3>
+
+            <div class="card-toolbar">
+              <a [href]="(currentCampaign | async)?.productUrl" target="_blank" class="btn btn-sm btn-light">معاينة المنتج في المتجر</a>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="border border-dashed border-gray-300 rounded px-7 py-3 mb-6">
+              <div class="d-flex flex-stack mb-3">
+                <div class="me-3">
+                  <a [href]="(currentCampaign | async)?.productUrl" target="_blank" class="text-gray-800 text-hover-primary fw-bold">{{ (currentCampaign | async)?.productName }}</a>
+                </div>
+                <span class="badge badge-light-success">متجر {{ (currentCampaign | async)?.productStore }} </span>
+              </div>
+
+              <div class="d-flex flex-stack">
+                <span class="text-gray-400 fw-bold"
+                  >سعر المنتج:
+                  {{ (currentCampaign | async)?.productPrice }}
+                  </span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-5 mb-xl-8">
+          <div class="card-body">
+            <p class="text-dark-75 fw-semibold fs-4 mb-3">Target Countries</p>
+            <div class="fw-semibold text-gray-600">
+              <a class="btn btn-light btn-sm btn-active-light-primary" *ngFor="let country of (currentCampaign | async)?.targetCountries">
+                {{ country }}
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-5 mb-xl-8">
+          <div class="card-body">
+            <p class="text-dark-75 fw-semibold fs-4 mb-3">Target Categories</p>
+            <div class="fw-semibold text-gray-600">
+              <a class="btn btn-light btn-sm btn-active-light-primary" *ngFor="let category of (currentCampaign | async)?.targetCategories">
+                {{ category }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ng-container> -->

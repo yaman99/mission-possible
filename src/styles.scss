@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+// @import "./assets/sass/style";
+@import "./assets/sass/style.bundle.rtl.css";
+// Replace above style with this SCSS file to enable dark mode styles
+//@import "./assets/sass/style.dark";
+
+// @import "./assets/sass/style.angular.scss";
+
+
+@font-face {
+  font-family: "JF Flat Regular";
+  src: url('./assets/fonts/jf-flat//JF\ Flat\ Regular.ttf') format('truetype'),
+    /* IE6-IE8 */ url("./assets/fonts/jf-flat/7d411bb0357d6fd29347455b7d207995.woff2")
+      format("woff2"),
+    /* chrome、firefox */
+      url("./assets/fonts/jf-flat/7d411bb0357d6fd29347455b7d207995.woff")
+      format("woff"),
+    /* chrome、firefox */
+      url("./assets/fonts/jf-flat/7d411bb0357d6fd29347455b7d207995.ttf")
+      format("truetype"); /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+}
+* {
+  font-family: "JF Flat Regular" !important;
+  // font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}

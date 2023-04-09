@@ -1,0 +1,70 @@
+<div class="card">
+  <div class="card-header border-0 pt-6">
+    <div class="card-title">
+      <h2>قائمة المبيعات المحققة</h2>
+    </div>
+    <div class="card-toolbar"></div>
+  </div>
+  <div class="card-body pt-0">
+    <div class="dataTables_wrapper dt-bootstrap4 no-footer">
+      <div class="table-responsive">
+        <table class="table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer">
+          <thead>
+            <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
+              <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 171.719px">
+                قيمة العمولة
+              </th>
+              <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
+                نوع العملة
+              </th>
+            </tr>
+          </thead>
+          <tbody class="fw-semibold text-gray-600">
+            <ng-container *ngIf="(isLoading$ | async) === false; else loading">
+              <ng-container *ngIf="(conversions$  | async)?.length! > 0; else noData">
+                <tr *ngFor="let conversions of conversions$ | async">
+
+                  <td>
+                    {{ conversions.commissionAmount }}
+                  </td>
+                  <td>
+                    {{ conversions.currency === 'SAR' ? 'ريال سعودي' : 'دولار أمريكي ' }}
+                  </td>
+                </tr>
+                 </ng-container>
+            </ng-container>
+            <ng-template #noData>
+              <tr>
+                <td colspan="2" class="text-center">
+                  <div>لا توجد بيانات</div>
+                </td>
+              </tr>
+            </ng-template>
+            <ng-template #loading>
+              <tr>
+                <td colspan="2" class="text-center">
+                  <span class="indicator-progress" [style.display]="'block'">
+                    <span class="spinner-border spinner-border-lg align-middle ms-2"></span>
+                  </span>
+                </td>
+              </tr>
+            </ng-template>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row">
+        <div
+          class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end"
+        >
+          <div class="dataTables_paginate paging_simple_numbers">
+            <app-pagination
+              (getPageButtonClicked)="getPage($event)"
+              [pagination$]="pagination$"
+            ></app-pagination>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

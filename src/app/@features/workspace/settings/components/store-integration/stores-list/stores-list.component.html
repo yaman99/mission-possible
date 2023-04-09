@@ -1,0 +1,21 @@
+<ul class="nav nav-pills nav-pills-custom mb-3" role="tablist">
+  <li class="nav-item mb-3 me-3 me-lg-6 position-relative" *ngFor="let store of stores">
+    <span
+      class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-success"
+      style="z-index: 999"
+      *ngIf="($workspace | async)?.integration?.name === store.name && ($workspace | async)?.integration?.status === integrationStatus.integrated"
+    >
+      <span class="fs-5">تم الربط</span>
+    </span>
+
+    <button
+      class="nav-link d-flex justify-content-between flex-column flex-center overflow-hidden active w-150px h-150px py-4"
+      (click)="selectStore(store.name)"
+      role="tab"
+    >
+      <img alt="" [ngClass]="store.class ?? '' " [src]="store.logo" width="100" />
+
+      <span class="nav-text text-gray-700 fw-bold fs-6 lh-1">{{ store.title }}</span>
+    </button>
+  </li>
+</ul>

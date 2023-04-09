@@ -1,0 +1,198 @@
+<div class="row">
+  <!-- <div class="col-lg-3">
+    <div class="card card-flush py-4">
+      <div class="card-header">
+        <div class="card-title">
+          <h2>Thumbnail</h2>
+        </div>
+      </div>
+      <div class="card-body text-center pt-0">
+        <div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3 overlay">
+          <div class="overlay-wrapper">
+            <style>
+              .image-input-placeholder {
+                background-image: url('./assets/media/svg/files/blank-image.svg');
+              }
+            </style>
+            <div class="image-input-wrapper w-150px h-150px"></div>
+          </div>
+          <div class="overlay-layer bg-dark bg-opacity-10 rounded">
+            <button *ngIf="!logoEditMode" class="btn btn-light-primary btn-shadow ml-2" (click)="openFileSelection()">
+              <i class="fas fa-edit"></i>
+            </button>
+            <ng-container *ngIf="logoEditMode">
+              <a (click)="saveImage()" class="btn btn-light-success btn-shadow">
+                <i class="fas fa-check"></i>
+              </a>
+              <a (click)="resetImage()" class="btn btn-light-danger btn-shadow m-4">
+                <i class="fas fa-times"></i>
+              </a>
+            </ng-container>
+
+            <input style="display: none" type="file" id="upload-image"USERS_MANAGEMENT name="upload-image" (change)="fileSelected($event)" />
+          </div>
+        </div>
+
+        <div class="text-muted fs-7">Set the product thumbnail image. Only *.png, *.jpg and *.jpeg image files are accepted</div>
+      </div>
+    </div>
+  </div> -->
+  <div class="col-lg-12">
+    <div class="card mb-5 mb-xl-10">
+      <!--begin::Card header-->
+      <div class="card-header border-0">
+        <!--begin::Card title-->
+        <div class="card-title m-0">
+          <h3 class="fw-bolder m-0">
+            <ng-container *ngIf="!updateMode; else update">
+              {{ 'USERS_MANAGEMENT.FORM.ADD_USER' | translate }}
+            </ng-container>
+            <ng-template #update>
+              {{ 'USERS_MANAGEMENT.FORM.UPDATE_USER' | translate : { name: currentUser } }}
+            </ng-template>
+          </h3>
+        </div>
+        <!--end::Card title-->
+      </div>
+      <!--begin::Card header-->
+      <!--begin::Content-->
+      <div class="collapse show">
+        <!--begin::Form-->
+        <form
+          id="kt_account_profile_details_form"
+          class="form fv-plugins-bootstrap5 fv-plugins-framework"
+          [formGroup]="usersForm"
+        >
+          <!--begin::Card body-->
+          <div class="card-body border-top p-9">
+            <!--begin::Input group-->
+            <div class="row mb-6">
+              <div class="col-lg-6">
+                <div class="mb-5">
+                  <!--begin::Label-->
+                  <label class="required form-label">{{
+                    'USERS_MANAGEMENT.INPUT.EMAIL' | translate
+                  }}</label>
+                  <!--end::Label-->
+                  <!--begin::Input-->
+                  <input
+                    type="text"
+                    formControlName="email"
+                    class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                    [ngClass]="{
+                      'is-invalid': form.email.invalid && (form.email.dirty || form.email.touched),
+                      'is-valid': form.email.valid
+                    }"
+                  />
+                  <!--end::Input-->
+                  <ng-container
+                    [ngTemplateOutlet]="formError"
+                    [ngTemplateOutletContext]="{
+                      validation: 'required',
+                      message: 'USERS_MANAGEMENT.VALIDATION.REQUIRED',
+                      inputName: 'USERS_MANAGEMENT.INPUT.EMAIL',
+                      control: form.email
+                    }"
+                  ></ng-container>
+                  <ng-container
+                    [ngTemplateOutlet]="formError"
+                    [ngTemplateOutletContext]="{
+                      validation: 'email',
+                      message: 'USERS_MANAGEMENT.VALIDATION.VALID',
+                      inputName: 'USERS_MANAGEMENT.INPUT.EMAIL',
+                      control: form.email
+                    }"
+                  ></ng-container>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-5">
+                  <!--begin::Label-->
+                  <label class="required form-label">{{
+                    'USERS_MANAGEMENT.INPUT.PHONE' | translate
+                  }}</label>
+                  <!--end::Label-->
+                  <!--begin::Input-->
+                  <input
+                    type="text"
+                    formControlName="phone"
+                    class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                    [ngClass]="{
+                      'is-invalid': form.phone.invalid && (form.phone.dirty || form.phone.touched),
+                      'is-valid': form.phone.valid
+                    }"
+                  />
+                  <!--end::Input-->
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-5">
+                  <!--begin::Label-->
+                  <label class="required form-label">{{
+                    'USERS_MANAGEMENT.INPUT.IS_ACTIVE' | translate
+                  }}</label>
+                  <select
+                    formControlName="isActive"
+                    class="form-select form-select-solid form-select-lg fw-bold mb-3 mb-lg-0"
+                    [ngClass]="{
+                      'is-invalid':
+                        form.isActive.invalid && (form.isActive.dirty || form.isActive.touched),
+                      'is-valid': form.isActive.valid
+                    }"
+                  >
+                    <option value="">Select Status</option>
+                    <option [value]="true">Active</option>
+                    <option [value]="false">InActive</option>
+                  </select>
+                  <!--end::Label-->
+                  <ng-container
+                    [ngTemplateOutlet]="formError"
+                    [ngTemplateOutletContext]="{
+                      validation: 'required',
+                      message: 'USERS_MANAGEMENT.VALIDATION.REQUIRED',
+                      inputName: 'USERS_MANAGEMENT.INPUT.IS_ACTIVE',
+                      control: form.isActive
+                    }"
+                  ></ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end::Card body-->
+          <ng-template
+            #formError
+            let-control="control"
+            let-message="message"
+            let-validation="validation"
+            let-inputName="inputName"
+          >
+            <ng-container
+              *ngIf="control.hasError(validation) && (control.dirty || control.touched)"
+            >
+              <div class="invalid-feedback">
+                {{ message | translate : { name: inputName | translate } }}
+              </div>
+            </ng-container>
+          </ng-template>
+        </form>
+        <!--begin::Actions-->
+        <div class="card-footer d-flex justify-content-end py-6 px-9">
+          <a [routerLink]="paths.usersList" class="btn btn-light btn-active-light-primary me-2">{{
+            'GENERAL.BUTTONS.CANCEL' | translate
+          }}</a>
+          <button
+            type="submit"
+            (click)="saveChanges()"
+            class="btn btn-primary"
+            id="kt_account_profile_details_submit"
+          >
+            {{ 'GENERAL.BUTTONS.SAVE_CHANGES' | translate }}
+          </button>
+        </div>
+        <!--end::Actions-->
+        <!--end::Form-->
+      </div>
+      <!--end::Content-->
+    </div>
+  </div>
+</div>

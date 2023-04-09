@@ -1,0 +1,46 @@
+<ng-container *ngIf="(pagination$ | async) !== null">
+  <div class="dataTables_paginate paging_simple_numbers">
+    <ul class="pagination" *ngIf="pagination$ | async as _pages">
+      <li class="paginate_button page-item previous" [ngClass]="{ disabled: _pages.currentPage <= 1 }">
+        <button (click)="getPage(_pages.currentPage - 1)" data-dt-idx="0" tabindex="0" class="page-link">
+          <i class="previous"></i>
+        </button>
+      </li>
+      <ng-container *ngFor="let page of [].constructor(_pages.totalPages); let i = index">
+        <li class="paginate_button page-item offset" [ngClass]="{ active: _pages.currentPage === i + 1 }">
+          <button [disabled]="_pages.currentPage === i + 1" (click)="getPage(i + 1)" data-dt-idx="1" tabindex="0" class="page-link">
+            {{ i + 1 }}
+          </button>
+        </li>
+      </ng-container>
+      <li class="paginate_button page-item next" [ngClass]="{ disabled: _pages.currentPage >= _pages.totalPages }">
+        <button (click)="getPage(_pages.currentPage + 1)" data-dt-idx="5" tabindex="0" class="page-link">
+          <i class="next"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+</ng-container>
+<ng-container *ngIf="pagination !== null">
+  <div class="dataTables_paginate paging_simple_numbers">
+    <ul class="pagination" *ngIf="pagination as _pages">
+      <li class="paginate_button page-item previous" [ngClass]="{ disabled: _pages.currentPage <= 1 }">
+        <button (click)="getPage(_pages.currentPage - 1)" data-dt-idx="0" tabindex="0" class="page-link">
+          <i class="previous"></i>
+        </button>
+      </li>
+      <ng-container *ngFor="let page of [].constructor(_pages.totalPages); let i = index">
+        <li class="paginate_button page-item offset" [ngClass]="{ active: _pages.currentPage === i + 1 }">
+          <button [disabled]="_pages.currentPage === i + 1" (click)="getPage(i + 1)" data-dt-idx="1" tabindex="0" class="page-link">
+            {{ i + 1 }}
+          </button>
+        </li>
+      </ng-container>
+      <li class="paginate_button page-item next" [ngClass]="{ disabled: _pages.currentPage >= _pages.totalPages }">
+        <button (click)="getPage(_pages.currentPage + 1)" data-dt-idx="5" tabindex="0" class="page-link">
+          <i class="next"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+</ng-container>

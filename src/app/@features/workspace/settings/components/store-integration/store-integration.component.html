@@ -1,0 +1,32 @@
+<div class="card mb-5 mb-xl-10">
+  <div
+    class="card-header border-0 cursor-pointer"
+    role="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#kt_account_profile_details"
+    aria-expanded="true"
+    aria-controls="kt_account_profile_details"
+  >
+    <div class="card-title m-0">
+      <h3 class="fw-bolder m-0">ربط مع المتجر</h3>
+    </div>
+    <div class="card-toolbar" *ngIf="hasSelected">
+      <button class="btn btn-flex btn-light-primary" (click)="unSelectStore()">
+        الرجوع
+      </button>
+    </div>
+  </div>
+  <div class="collapse show">
+    <form class="form fv-plugins-bootstrap5 fv-plugins-framework">
+      <div class="card-body border-top p-9">
+        <ng-container *ngIf="!hasSelected; else stepsComp">
+          <app-stores-list (selectedStore)="selectStore($event)"></app-stores-list>
+        </ng-container>
+        <ng-template #stepsComp>
+          <app-integration-with-salla *ngIf="selectedStoreName === 'Salla'"></app-integration-with-salla>
+          <app-integration-with-zid *ngIf="selectedStoreName === 'Zid'"></app-integration-with-zid>
+        </ng-template>
+      </div>
+    </form>
+  </div>
+</div>
