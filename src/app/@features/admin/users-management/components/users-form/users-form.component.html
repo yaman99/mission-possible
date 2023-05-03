@@ -45,7 +45,7 @@
         <div class="card-title m-0">
           <h3 class="fw-bolder m-0">
             <ng-container *ngIf="!updateMode; else update">
-              {{ 'USERS_MANAGEMENT.FORM.ADD_USER' | translate }}
+              Add User
             </ng-container>
             <ng-template #update>
               {{ 'USERS_MANAGEMENT.FORM.UPDATE_USER' | translate : { name: currentUser } }}
@@ -70,9 +70,7 @@
               <div class="col-lg-6">
                 <div class="mb-5">
                   <!--begin::Label-->
-                  <label class="required form-label">{{
-                    'USERS_MANAGEMENT.INPUT.EMAIL' | translate
-                  }}</label>
+                  <label class="required form-label">Email</label>
                   <!--end::Label-->
                   <!--begin::Input-->
                   <input
@@ -108,9 +106,7 @@
               <div class="col-lg-6">
                 <div class="mb-5">
                   <!--begin::Label-->
-                  <label class="required form-label">{{
-                    'USERS_MANAGEMENT.INPUT.PHONE' | translate
-                  }}</label>
+                  <label class="required form-label">Phone</label>
                   <!--end::Label-->
                   <!--begin::Input-->
                   <input
@@ -128,9 +124,7 @@
               <div class="col-lg-6">
                 <div class="mb-5">
                   <!--begin::Label-->
-                  <label class="required form-label">{{
-                    'USERS_MANAGEMENT.INPUT.IS_ACTIVE' | translate
-                  }}</label>
+                  <label class="required form-label">Status</label>
                   <select
                     formControlName="isActive"
                     class="form-select form-select-solid form-select-lg fw-bold mb-3 mb-lg-0"
@@ -177,16 +171,16 @@
         </form>
         <!--begin::Actions-->
         <div class="card-footer d-flex justify-content-end py-6 px-9">
-          <a [routerLink]="paths.usersList" class="btn btn-light btn-active-light-primary me-2">{{
-            'GENERAL.BUTTONS.CANCEL' | translate
-          }}</a>
+          <a [routerLink]="paths.usersList" class="btn btn-light btn-active-light-primary me-2">
+            Cancel
+          </a>
           <button
             type="submit"
             (click)="saveChanges()"
             class="btn btn-primary"
             id="kt_account_profile_details_submit"
           >
-            {{ 'GENERAL.BUTTONS.SAVE_CHANGES' | translate }}
+            Save Changes
           </button>
         </div>
         <!--end::Actions-->

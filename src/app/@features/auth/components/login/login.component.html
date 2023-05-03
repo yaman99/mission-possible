@@ -8,19 +8,17 @@
 >
   <!--begin::Heading-->
   <div class="text-center mb-10">
-    <h1 class="text-dark mb-3" translate="AUTH.LOGIN.TITLE"></h1>
-    <div class="text-gray-400 fw-bold fs-4">
-      {{ 'AUTH.LOGIN.NO_ACCOUNT_QA' | translate }}
-      <a routerLink="/auth/registration" id="kt_login_signup" class="link-primary fw-bolder">{{
-        'AUTH.SIGNUP.BUTTON' | translate
-      }}</a>
-    </div>
+    <h1 class="text-dark mb-3">Internship Application System</h1>
+<!--    <div class="text-gray-400 fw-bold fs-4">-->
+<!--      Online Internship Application-->
+<!--      <a routerLink="/auth/registration" id="kt_login_signup" class="link-primary fw-bolder">Sign Up</a>-->
+<!--    </div>-->
   </div>
   <!--end::Heading-->
 
   <!--begin::Form group-->
   <div class="fv-row mb-10">
-    <label class="form-label fs-6 text-dark">{{ 'AUTH.INPUT.EMAIL' | translate }}</label>
+    <label class="form-label fs-6 text-dark">Email</label>
     <input
       class="form-control form-control-lg form-control-solid"
       type="email"
@@ -73,15 +71,13 @@
   <div class="fv-row mb-10">
     <div class="d-flex justify-content-between mt-n5">
       <div class="d-flex flex-stack mb-2">
-        <label class="form-label text-dark fs-6 mb-0">{{
-          'AUTH.INPUT.PASSWORD' | translate
-        }}</label>
+        <label class="form-label text-dark fs-6 mb-0">Password</label>
         <a
           routerLink="/auth/forgot-password"
           class="link-primary fs-6 fw-bolder"
           [style.margin-right]="'10px'"
         >
-          {{ 'AUTH.LOGIN.FORGOT_PASSWORD' | translate }}
+          Forgot password?
         </a>
       </div>
     </div>
@@ -134,7 +130,7 @@
       class="btn btn-lg btn-primary w-100 mb-5"
       [disabled]="loginForm.invalid"
     >
-    <span class="indicator-label">{{ 'AUTH.LOGIN.LOGIN_BUTTON' | translate }}</span>
+    <span class="indicator-label">Login</span>
       <!-- <ng-container
 
       >

@@ -21,7 +21,7 @@ export class AuthService implements OnDestroy {
 
   }
   getTokenClaims(token:string) : TokenClaimsModel {
-    return this.jwtHelper.decodeToken(token);
+    return this.jwtHelper.decodeToken(token)!;
   }
 
   ngOnDestroy() {
