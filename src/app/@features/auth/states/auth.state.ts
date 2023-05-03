@@ -9,11 +9,9 @@ import { AuthStateActions } from '../actions/auth.action';
 import { tap } from 'rxjs';
 import { Navigate } from '@ngxs/router-plugin';
 import { AuthPaths } from '@shared/paths';
-import { UserTypes } from '@shared/constants';
 import { User } from '../models/user';
 import { StateClear, StateReset, StateResetAll } from 'ngxs-reset-plugin';
-import { PromoterStateActions } from '@features/promoter/_store/actions/promoter-state.actions';
-import { WorkspaceStateActions } from '@features/workspace/_store/actions/workspace.action';
+import { UserTypes } from '@shared/constants/userType.constants';
 
 @State<AuthStateModel>({
   name: 'auth',
@@ -94,17 +92,18 @@ export class AuthBaseState extends LoadingHandler<AuthStateModel> {
 
   @Action(AuthStateActions.Login)
   onLogin(ctx: StateContext<AuthStateModel>, { payload }: AuthStateActions.Login) {
-    this.startLoading(ctx);
-    return this.authHttpService.login(payload.email, payload.password).pipe(
-      tap({
-        next: (res) => {
-          ctx.dispatch(new AuthStateActions.LoginSuccess(res));
-        },
-        error: (err) => {
-          ctx.dispatch(new AuthStateActions.LoginFailed(err));
-        },
-      })
-    );
+    ctx.dispatch(new Navigate(['co/dashboard']));
+    // this.startLoading(ctx);
+    // return this.authHttpService.login(payload.email, payload.password).pipe(
+    //   tap({
+    //     next: (res) => {
+    //       ctx.dispatch(new AuthStateActions.LoginSuccess(res));
+    //     },
+    //     error: (err) => {
+    //       ctx.dispatch(new AuthStateActions.LoginFailed(err));
+    //     },
+    //   })
+    // );
   }
 
   @Action(AuthStateActions.SignUp)
@@ -232,9 +231,9 @@ export class AuthBaseState extends LoadingHandler<AuthStateModel> {
             userType: data.userType,
           });
           if (state.userType === UserTypes.Promoter) {
-            ctx.dispatch(new PromoterStateActions.Get(state.id!))
+            // ctx.dispatch(new PromoterStateActions.Get(state.id!))
           } else if (state.userType === UserTypes.Advertiser) {
-            ctx.dispatch(new WorkspaceStateActions.Get(state.id!));
+            // ctx.dispatch(new WorkspaceStateActions.Get(state.id!));
           }else if (state.userType === UserTypes.Admin) {
             ctx.dispatch(new Navigate(AuthPaths.AdminLoginRedirectPathComponents));
           }

@@ -69,9 +69,8 @@
         menu-arrow-gray-500
       "
     >
-      <app-workspace-aside-menu *ngIf="isAdvertiser$ | async" id="asideMenu"></app-workspace-aside-menu>
-      <app-promoter-aside-menu *ngIf="isPromoter$ | async" id="asideMenu"></app-promoter-aside-menu>
-      <app-admin-aside-menu *ngIf="isAdmin$ | async" id="asideMenu"></app-admin-aside-menu>
+      <!-- <app-admin-aside-menu *ngIf="isAdmin$ | async" id="asideMenu"></app-admin-aside-menu> -->
+      <app-admin-aside-menu></app-admin-aside-menu>
     </div>
   </div>
 </div>

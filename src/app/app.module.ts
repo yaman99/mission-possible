@@ -22,8 +22,6 @@ import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
 import * as CryptoJS from 'crypto-js';
 import * as _ from 'lodash';
-import { PromoterState } from '@features/promoter/_store/states/promoter.state';
-import { WorkspaceState } from '@features/workspace/_store/states/workspace.state';
 
 function des(data: string) {
   return CryptoJS.AES.decrypt(data, environment.stateMangementSecretKey).toString(
@@ -55,23 +53,11 @@ function enc(data: string) {
     AppRoutingModule,
     NgbModule,
     TranslateModule.forRoot(),
-    NgxsModule.forRoot([AuthBaseState, WorkspaceState, PromoterState]),
+    NgxsModule.forRoot([AuthBaseState]),
     NgxsResetPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot({
       key: [
         'auth',
-        'workspace',
-        'items',
-        'campaigns',
-        'conversions',
-        'affiliates',
-        'promoter',
-        'promoterCampaigns',
-        'workspaceWallet',
-        'promoterWallet',
-        'wDashboard',
-        'promoterConversions',
-        'usersManagement',
       ],
       deserialize: (state: string) => JSON.parse(des(state)),
       serialize: (state: any) => enc(JSON.stringify(state)),

@@ -134,13 +134,9 @@
       class="btn btn-lg btn-primary w-100 mb-5"
       [disabled]="loginForm.invalid"
     >
-      <ng-container
-        *ngIf="
-          (loadingAuth$ | async) ||
-            (loadingWorkspaceData$ | async) ||
-            (loadingPromoterData$ | async);
-          else loadingStoped
-        "
+    <span class="indicator-label">{{ 'AUTH.LOGIN.LOGIN_BUTTON' | translate }}</span>
+      <!-- <ng-container
+
       >
         <span class="indicator-progress" [style.display]="'block'">
           {{ 'GENERAL.WORDS.PLEASE_WAIT' | translate }}
@@ -149,7 +145,7 @@
       </ng-container>
       <ng-template #loadingStoped>
         <span class="indicator-label">{{ 'AUTH.LOGIN.LOGIN_BUTTON' | translate }}</span>
-      </ng-template>
+      </ng-template> -->
     </button>
   </div>
   <!--end::Action-->

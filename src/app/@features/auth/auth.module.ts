@@ -8,7 +8,6 @@ import { AuthComponent } from './auth.component';
 import { SharedModule } from '@shared/shared.module';
 import { AuthBaseState } from './states/auth.state';
 import { NgxsModule } from '@ngxs/store';
-import { QuickIntegrationComponent } from './components/quick-integration/quick-integration.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +16,6 @@ import { QuickIntegrationComponent } from './components/quick-integration/quick-
     ForgotPasswordComponent,
     LogoutComponent,
     AuthComponent,
-    QuickIntegrationComponent,
   ],
   imports: [
     SharedModule,

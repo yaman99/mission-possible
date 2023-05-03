@@ -4,7 +4,6 @@ import { Subscription, Observable } from 'rxjs';
 import { LayoutService } from '../../core/layout.service';
 import { environment } from '../../../../../environments/environment';
 import { MenuComponent, DrawerComponent, ToggleComponent, ScrollComponent } from '../../../../@core/kt/components';
-import { ItemPaths } from '@shared/paths';
 import { Select } from '@ngxs/store';
 import { AuthBaseState } from '@features/auth';
 

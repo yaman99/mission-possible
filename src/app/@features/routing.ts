@@ -1,23 +1,18 @@
 import { Routes } from '@angular/router';
-import { UserTypes } from '@shared/constants';
 import { UserTypeGuard } from './auth';
+import { UserTypes } from '@shared/constants/userType.constants';
 
 const Routing: Routes = [
   {
-    canActivate: [UserTypeGuard],
-    data: { guardUserType: [UserTypes.Advertiser] },
-    path: 'w',
-    loadChildren: () => import('./workspace/workspace.module').then((m) => m.WorkspaceModule),
+    // canActivate: [UserTypeGuard],
+    // data: { guardUserType: [UserTypes.Advertiser] },
+    path: 'co',
+    loadChildren: () => import('./coordinator/coordinator.module').then((m) => m.CoordinatorModule),
   },
+
   {
-    canActivate: [UserTypeGuard],
-    data: { guardUserType: [UserTypes.Promoter] },
-    path: 'p',
-    loadChildren: () => import('./promoter/promoter.module').then((m) => m.PromoterModule),
-  },
-  {
-    canActivate: [UserTypeGuard],
-    data: { guardUserType: [UserTypes.Admin] },
+    // canActivate: [UserTypeGuard],
+    // data: { guardUserType: [UserTypes.Admin] },
     path: 'a',
     loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule),
   },

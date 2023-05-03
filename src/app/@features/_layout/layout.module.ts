@@ -21,13 +21,11 @@ import { ContentComponent } from './components/content/content.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ScriptsInitComponent } from './components/scripts-init/scripts-init.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { WorkspaceAsideMenuComponent } from './components/aside/workspace-aside-menu/workspace-aside-menu.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { PageTitleComponent } from './components/header/page-title/page-title.component';
 import { HeaderMenuComponent } from './components/header/header-menu/header-menu.component';
 import { DrawersModule, DropdownMenusModule,  EngagesModule} from '../../@shared/partials';
 import {EngagesComponent} from "../../@shared/partials/layout/engages/engages.component";
-import { PromoterAsideMenuComponent } from './components/aside/promoter-aside-menu/promoter-aside-menu.component';
 import { AdminAsideMenuComponent } from './components/aside/admin-aside-menu/admin-aside-menu.component';
 
 const routes: Routes = [
@@ -47,12 +45,10 @@ const routes: Routes = [
     FooterComponent,
     ScriptsInitComponent,
     ToolbarComponent,
-    WorkspaceAsideMenuComponent,
     TopbarComponent,
     PageTitleComponent,
     HeaderMenuComponent,
     EngagesComponent,
-    PromoterAsideMenuComponent,
     AdminAsideMenuComponent
   ],
   imports: [

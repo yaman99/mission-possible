@@ -6,8 +6,6 @@ import { Subscription, Observable } from 'rxjs';
 import { AuthStateActions } from '../../actions/auth.action';
 import { Select } from '@ngxs/store';
 import { AuthBaseState } from '@features/auth/states/auth.state';
-import { WorkspaceState } from '@features/workspace/_store/states/workspace.state';
-import { PromoterState } from '@features/promoter/_store/states/promoter.state';
 
 @Component({
   selector: 'app-login',
@@ -15,17 +13,12 @@ import { PromoterState } from '@features/promoter/_store/states/promoter.state';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  // defaultAuth: any = {
-  //   email: 'rakolee1999sawan@gmail.com',
-  //   password: 'yaman.jmx9',
-  // };
+
   loginForm: FormGroup;
   hasError: boolean;
   returnUrl: string;
 
   @Select(AuthBaseState.isLoading)  loadingAuth$: Observable<boolean>;
-  @Select(WorkspaceState.isLoading)  loadingWorkspaceData$: Observable<boolean>;
-  @Select(PromoterState.isLoading)  loadingPromoterData$: Observable<boolean>;
 
   private unsubscribe: Subscription[] = [];
 

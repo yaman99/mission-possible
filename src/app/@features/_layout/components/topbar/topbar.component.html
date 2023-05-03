@@ -74,7 +74,7 @@
       <img src="./assets/media/avatars/user.png" alt="image" class="hoverZoomLink" />
     </div>
     <div class="d-none d-md-flex flex-column align-items-start justify-content-center">
-      <span *ngIf="isAdmin" class="text-muted fs-7 fw-semibold lh-1 mb-2">الإدارة</span>
+      <!-- <span *ngIf="isAdmin" class="text-muted fs-7 fw-semibold lh-1 mb-2">الإدارة</span>
       <span *ngIf="isAdvertiser" class="text-muted fs-7 fw-semibold lh-1 mb-2">مساحة العمل</span>
       <span *ngIf="isPromoter" class="text-muted fs-7 fw-semibold lh-1 mb-2">
         {{ (promoter$ | async)?.firstName }} {{ (promoter$ | async)?.lastName }}</span
@@ -94,7 +94,7 @@
       <ng-template #loading>
         <span class="spinner-border spinner-border-sm align-middle mx-2"></span>
       </ng-template>
-      <span *ngIf="isAdmin" class="text-dark fs-base fw-bold lh-1">{{ userEmail | async }} </span>
+      <span *ngIf="isAdmin" class="text-dark fs-base fw-bold lh-1">{{ userEmail | async }} </span> -->
     </div>
   </div>
   <app-user-inner></app-user-inner>
