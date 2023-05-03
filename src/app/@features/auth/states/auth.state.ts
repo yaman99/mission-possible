@@ -119,11 +119,12 @@ export class AuthBaseState extends LoadingHandler<AuthStateModel> {
 
   @Action(AuthStateActions.Logout)
   onLogout(ctx: StateContext<AuthStateModel>) {
-    return this.authHttpService.logout().pipe(
-      tap(() => {
-        ctx.dispatch(new AuthStateActions.LogoutSuccess());
-      })
-    );
+    // return this.authHttpService.logout().pipe(
+    //   tap(() => {
+    //     ctx.dispatch(new AuthStateActions.LogoutSuccess());
+    //   })
+    // );
+    ctx.dispatch(new AuthStateActions.LogoutSuccess());
   }
 
   @Action(AuthStateActions.LoginFailed)
