@@ -1,4 +1,4 @@
-<div class="row">
+<div class='row'>
   <!-- <div class="col-lg-3">
     <div class="card card-flush py-4">
       <div class="card-header">
@@ -37,14 +37,14 @@
       </div>
     </div>
   </div> -->
-  <div class="col-lg-12">
-    <div class="card mb-5 mb-xl-10">
+  <div class='col-lg-12'>
+    <div class='card mb-5 mb-xl-10'>
       <!--begin::Card header-->
-      <div class="card-header border-0">
+      <div class='card-header border-0'>
         <!--begin::Card title-->
-        <div class="card-title m-0">
-          <h3 class="fw-bolder m-0">
-            <ng-container *ngIf="!updateMode; else update">
+        <div class='card-title m-0'>
+          <h3 class='fw-bolder m-0'>
+            <ng-container *ngIf='!updateMode; else update'>
               Add User
             </ng-container>
             <ng-template #update>
@@ -56,27 +56,84 @@
       </div>
       <!--begin::Card header-->
       <!--begin::Content-->
-      <div class="collapse show">
+      <div class='collapse show'>
         <!--begin::Form-->
         <form
-          id="kt_account_profile_details_form"
-          class="form fv-plugins-bootstrap5 fv-plugins-framework"
-          [formGroup]="usersForm"
+          id='kt_account_profile_details_form'
+          class='form fv-plugins-bootstrap5 fv-plugins-framework'
+          [formGroup]='usersForm'
+          #f='ngForm'
         >
           <!--begin::Card body-->
-          <div class="card-body border-top p-9">
+          <div class='card-body border-top p-9'>
             <!--begin::Input group-->
-            <div class="row mb-6">
-              <div class="col-lg-6">
-                <div class="mb-5">
+            <div class='row mb-6'>
+<!--              &lt;!&ndash; Adding New fields&ndash;&gt;-->
+<!--              <div class='col-lg-6'>-->
+<!--                <div class='mb-5'>-->
+<!--                  &lt;!&ndash;begin::Label&ndash;&gt;-->
+<!--                  <label class='required form-label'>First Name</label>-->
+<!--                  &lt;!&ndash;end::Label&ndash;&gt;-->
+<!--                  &lt;!&ndash;begin::Input&ndash;&gt;-->
+<!--                  <input-->
+<!--                    type='text'-->
+<!--                    formControlName='firstname'-->
+<!--                    class='form-control form-control-lg form-control-solid mb-3 mb-lg-0'-->
+<!--                    [ngClass]="{-->
+<!--                      'is-invalid': form.firstname.invalid && (form.firstname.dirty || form.firstname.touched),-->
+<!--                      'is-valid': form.firstname.valid-->
+<!--                    }"-->
+<!--                  />-->
+<!--                  &lt;!&ndash;end::Input&ndash;&gt;-->
+<!--                  <ng-container-->
+<!--                    [ngTemplateOutlet]='formError'-->
+<!--                    [ngTemplateOutletContext]="{-->
+<!--                      validation: 'required',-->
+<!--                      message: 'USERS_MANAGEMENT.VALIDATION.REQUIRED',-->
+<!--                      inputName: 'USERS_MANAGEMENT.INPUT.FIRST_NAME',-->
+<!--                      control: form.firstname-->
+<!--                    }"-->
+<!--                  ></ng-container>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class='col-lg-6'>-->
+<!--                <div class='mb-5'>-->
+<!--                  &lt;!&ndash;begin::Label&ndash;&gt;-->
+<!--                  <label class='required form-label'>Last Name</label>-->
+<!--                  &lt;!&ndash;end::Label&ndash;&gt;-->
+<!--                  &lt;!&ndash;begin::Input&ndash;&gt;-->
+<!--                  <input-->
+<!--                    type='text'-->
+<!--                    formControlName='lastname'-->
+<!--                    class='form-control form-control-lg form-control-solid mb-3 mb-lg-0'-->
+<!--                    [ngClass]="{-->
+<!--                      'is-invalid': form.lastname.invalid && (form.lastname.dirty || form.lastname.touched),-->
+<!--                      'is-valid': form.lastname.valid-->
+<!--                    }"-->
+<!--                  />-->
+<!--                  &lt;!&ndash;end::Input&ndash;&gt;-->
+<!--                  <ng-container-->
+<!--                    [ngTemplateOutlet]='formError'-->
+<!--                    [ngTemplateOutletContext]="{-->
+<!--                      validation: 'required',-->
+<!--                      message: 'USERS_MANAGEMENT.VALIDATION.REQUIRED',-->
+<!--                      inputName: 'USERS_MANAGEMENT.INPUT.LAST_NAME',-->
+<!--                      control: form.lastname-->
+<!--                    }"-->
+<!--                  ></ng-container>-->
+<!--                </div>-->
+<!--              </div>-->
+              <!-- End new fields -->
+              <div class='col-lg-6'>
+                <div class='mb-5'>
                   <!--begin::Label-->
-                  <label class="required form-label">Email</label>
+                  <label class='required form-label'>Email</label>
                   <!--end::Label-->
                   <!--begin::Input-->
                   <input
-                    type="text"
-                    formControlName="email"
-                    class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                    type='text'
+                    formControlName='email'
+                    class='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                     [ngClass]="{
                       'is-invalid': form.email.invalid && (form.email.dirty || form.email.touched),
                       'is-valid': form.email.valid
@@ -84,7 +141,7 @@
                   />
                   <!--end::Input-->
                   <ng-container
-                    [ngTemplateOutlet]="formError"
+                    [ngTemplateOutlet]='formError'
                     [ngTemplateOutletContext]="{
                       validation: 'required',
                       message: 'USERS_MANAGEMENT.VALIDATION.REQUIRED',
@@ -93,7 +150,7 @@
                     }"
                   ></ng-container>
                   <ng-container
-                    [ngTemplateOutlet]="formError"
+                    [ngTemplateOutlet]='formError'
                     [ngTemplateOutletContext]="{
                       validation: 'email',
                       message: 'USERS_MANAGEMENT.VALIDATION.VALID',
@@ -103,16 +160,16 @@
                   ></ng-container>
                 </div>
               </div>
-              <div class="col-lg-6">
-                <div class="mb-5">
+              <div class='col-lg-6'>
+                <div class='mb-5'>
                   <!--begin::Label-->
-                  <label class="required form-label">Phone</label>
+                  <label class='required form-label'>Phone</label>
                   <!--end::Label-->
                   <!--begin::Input-->
                   <input
-                    type="text"
-                    formControlName="phone"
-                    class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                    type='text'
+                    formControlName='phone'
+                    class='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                     [ngClass]="{
                       'is-invalid': form.phone.invalid && (form.phone.dirty || form.phone.touched),
                       'is-valid': form.phone.valid
@@ -121,26 +178,26 @@
                   <!--end::Input-->
                 </div>
               </div>
-              <div class="col-lg-6">
-                <div class="mb-5">
+              <div class='col-lg-6'>
+                <div class='mb-5'>
                   <!--begin::Label-->
-                  <label class="required form-label">Status</label>
+                  <label class='required form-label'>Status</label>
                   <select
-                    formControlName="isActive"
-                    class="form-select form-select-solid form-select-lg fw-bold mb-3 mb-lg-0"
+                    formControlName='isActive'
+                    class='form-select form-select-solid form-select-lg fw-bold mb-3 mb-lg-0'
                     [ngClass]="{
                       'is-invalid':
                         form.isActive.invalid && (form.isActive.dirty || form.isActive.touched),
                       'is-valid': form.isActive.valid
                     }"
                   >
-                    <option value="">Select Status</option>
-                    <option [value]="true">Active</option>
-                    <option [value]="false">InActive</option>
+                    <option value=''>Select Status</option>
+                    <option [value]='true'>Active</option>
+                    <option [value]='false'>InActive</option>
                   </select>
                   <!--end::Label-->
                   <ng-container
-                    [ngTemplateOutlet]="formError"
+                    [ngTemplateOutlet]='formError'
                     [ngTemplateOutletContext]="{
                       validation: 'required',
                       message: 'USERS_MANAGEMENT.VALIDATION.REQUIRED',
@@ -150,40 +207,73 @@
                   ></ng-container>
                 </div>
               </div>
+
+              <!-- Adding new User Type Field -->
+<!--              <div class='col-lg-6'>-->
+<!--                <div class='mb-5'>-->
+<!--                  &lt;!&ndash;begin::Label&ndash;&gt;-->
+<!--                  <label class='required form-label'>User Type</label>-->
+<!--                  <select-->
+<!--                    formControlName='userType'-->
+<!--                    class='form-select form-select-solid form-select-lg fw-bold mb-3 mb-lg-0'-->
+<!--                    [ngClass]="{-->
+<!--                      'is-invalid':-->
+<!--                        form.userType.invalid && (form.userType.dirty || form.userType.touched),-->
+<!--                      'is-valid': form.userType.valid-->
+<!--                    }"-->
+<!--                  >-->
+<!--                    <option value=''>Select User Type</option>-->
+<!--                    <option [value]='userType.coordinator'>Admin</option>-->
+<!--                    <option [value]='userType.coordinator'>Coordinator</option>-->
+<!--                    <option [value]='userType.career_center'>Career Center</option>-->
+<!--                  </select>-->
+<!--                  &lt;!&ndash;end::Label&ndash;&gt;-->
+<!--                  <ng-container-->
+<!--                    [ngTemplateOutlet]='formError'-->
+<!--                    [ngTemplateOutletContext]="{-->
+<!--                      validation: 'required',-->
+<!--                      message: 'USERS_MANAGEMENT.VALIDATION.REQUIRED',-->
+<!--                      inputName: 'USERS_MANAGEMENT.INPUT.USER_TYPE',-->
+<!--                      control: form.userType-->
+<!--                    }"-->
+<!--                  ></ng-container>-->
+<!--                </div>-->
+<!--              </div>-->
             </div>
           </div>
           <!--end::Card body-->
           <ng-template
             #formError
-            let-control="control"
-            let-message="message"
-            let-validation="validation"
-            let-inputName="inputName"
+            let-control='control'
+            let-message='message'
+            let-validation='validation'
+            let-inputName='inputName'
           >
             <ng-container
-              *ngIf="control.hasError(validation) && (control.dirty || control.touched)"
+              *ngIf='control.hasError(validation) && (control.dirty || control.touched)'
             >
-              <div class="invalid-feedback">
+              <div class='invalid-feedback'>
                 {{ message | translate : { name: inputName | translate } }}
               </div>
             </ng-container>
           </ng-template>
+          <!--begin::Actions-->
+          <div class='card-footer d-flex justify-content-end py-6 px-9'>
+            <a [routerLink]='paths.usersList' class='btn btn-light btn-active-light-primary me-2'>
+              Cancel
+            </a>
+            <button
+              type='submit'
+              (click)='saveChanges()'
+              class='btn btn-primary'
+              id='kt_account_profile_details_submit'
+              [disabled]= "!f.valid"
+            >
+              Save Changes
+            </button>
+          </div>
+          <!--end::Actions-->
         </form>
-        <!--begin::Actions-->
-        <div class="card-footer d-flex justify-content-end py-6 px-9">
-          <a [routerLink]="paths.usersList" class="btn btn-light btn-active-light-primary me-2">
-            Cancel
-          </a>
-          <button
-            type="submit"
-            (click)="saveChanges()"
-            class="btn btn-primary"
-            id="kt_account_profile_details_submit"
-          >
-            Save Changes
-          </button>
-        </div>
-        <!--end::Actions-->
         <!--end::Form-->
       </div>
       <!--end::Content-->

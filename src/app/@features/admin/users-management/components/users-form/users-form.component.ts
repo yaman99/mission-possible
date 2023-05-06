@@ -13,20 +13,27 @@ import { UpdateUserRequest } from '../../common/models/requests/updateUserReques
 @Component({
   selector: 'app-users-form',
   templateUrl: './users-form.component.html',
-  styleUrls: ['./users-form.component.scss'],
+  styleUrls: ['./users-form.component.scss']
 })
 export class UsersFormComponent implements OnInit {
   get form() {
     return this.usersForm.controls;
   }
+
   paths = {
-    usersList: UsersManagementPaths.listComponents,
+    usersList: UsersManagementPaths.listComponents
   };
   usersForm: FormGroup;
   updateMode = false;
-  userType: string;
+  userType: {
+    'admin' : 'admin'
+    'coordinator': 'coordinator',
+    'career_center': 'career_center'
+  };
   currentUser: UsersManagementModel;
-  constructor(private route: ActivatedRoute, private fb: FormBuilder, private stateBus: IBus) {}
+
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private stateBus: IBus) {
+  }
 
   ngOnInit(): void {
     this.initForm();
@@ -41,13 +48,15 @@ export class UsersFormComponent implements OnInit {
         break;
     }
   }
+
   initForm() {
     this.usersForm = this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       phone: [''],
-      isActive: [false, Validators.required],
+      isActive: [false, Validators.required]
     });
   }
+
   prepareUpdateForm() {
     const userId = this.route.snapshot.paramMap.get('id')!;
     console.log(userId);
@@ -59,23 +68,24 @@ export class UsersFormComponent implements OnInit {
       email: this.currentUser.email,
       phone: this.currentUser.phone,
       isActive: this.currentUser.isActive,
-      id: this.currentUser.id,
+      id: this.currentUser.id
     });
   }
+
   saveChanges() {
     console.log(this.form.isActive.value);
 
     let insertModel: AddNewAdminRequest = {
       email: this.form.email.value,
       phone: this.form.phone.value,
-      isActive: this.form.isActive.value == 'true' ? true : false,
+      isActive: this.form.isActive.value == 'true' ? true : false
     };
     if (!this.updateMode) {
       this.stateBus.excuteAction(new UsersManagementStateActions.AddNewAdmin(insertModel));
     } else {
       let updateModel: UpdateUserRequest = {
         ...insertModel,
-        id: this.currentUser.id,
+        id: this.currentUser.id
       };
       this.stateBus.excuteAction(new UsersManagementStateActions.UpdateUser(updateModel));
     }
