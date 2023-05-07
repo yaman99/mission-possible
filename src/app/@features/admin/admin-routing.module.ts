@@ -10,16 +10,12 @@ const routes: Routes = [
     component:AdminComponent,
     children:[
       {
-        path:'dashboard',
-        component:DashboardComponent
-      },
-      {
         path: UsersManagementPaths.basePath,
         loadChildren: () => import('./users-management/users-management.module').then((m) => m.UsersManagementModule),
       },
       {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: UsersManagementPaths.basePath,
         pathMatch: 'full',
       },
       {

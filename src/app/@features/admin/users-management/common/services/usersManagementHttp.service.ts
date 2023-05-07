@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -15,6 +15,7 @@ const AUTH_ENDPOINT = `${environment.authApiUrl}/Admin`;
   providedIn: 'root',
 })
 export class UsersManagementHttpService {
+  insertedUsers : BehaviorSubject<any> = new BehaviorSubject<any>([]);
   constructor(private http: HttpClient) {}
 
   getAllUsers(model: GetAllUsersRequest): Observable<PagedResult<GetAllUsersResponse>> {
@@ -31,4 +32,10 @@ export class UsersManagementHttpService {
   addNewAdmin(payload: AddNewAdminRequest): Observable<any> {
     return this.http.post<any>(`${AUTH_ENDPOINT}/add-admin`, payload);
   }
+
+
+  AddNewUser(payload:any){
+    this.insertedUsers.next([payload]);
+  }
+
 }

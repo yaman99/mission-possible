@@ -11,6 +11,8 @@ import { IBus } from '@shared/state-bus/IBus';
 import { UsersManagementStateActions } from '../../common/StateStore/usersManagement.action';
 import { GetAllUsersRequest } from '../../common/models/requests/getAllUsersRequest';
 import { Expansion } from '@angular/compiler';
+import { UsersManagementHttpService } from '../../common/services/usersManagementHttp.service';
+import { UserTypes } from '@shared/constants';
 
 @Component({
   selector: 'app-users-list',
@@ -23,14 +25,23 @@ export class UsersListComponent implements OnInit {
     editUser: UsersManagementPaths.editUserComponents,
   };
   selectedType: string;
+  userType = UserTypes;
   @Select(UsersManagementState.users) users$: Observable<User[]>;
   @Select(UsersManagementState.pagination) pagination$: Observable<PagedResultBase>;
-  constructor(private stateBus: IBus) {}
+
+  users: any;
+  constructor(private stateBus: IBus, private userServ: UsersManagementHttpService) {}
 
   ngOnInit(): void {
-    this.SelectUserType('admin');
-  }
+    console.log(this.getUsers().subscribe(data=>{
+      this.users = data
+    }));
 
+    // this.SelectUserType('admin');
+  }
+  getUsers() {
+    return this.userServ.insertedUsers;
+  }
   deleteUser(id: string) {
     this.stateBus.excuteAction(new UsersManagementStateActions.DeleteUser(id));
   }
