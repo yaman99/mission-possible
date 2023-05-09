@@ -32,18 +32,25 @@ export class UsersFormComponent implements OnInit {
   fakeUsers = [
     {
       id: '1',
-      firstName: 'yaman',
-      lastName: 'sawan',
-      email: 'yaman@uskudar.edu.tr',
+      firstName: 'KRİSTİN',
+      lastName: 'SURPUHİ BENLİ',
+      email: 'kristin.benli@uskudar.edu.tr',
       userType: this.userType.coordinator,
     },
     {
       id: '2',
-      firstName: 'dele',
-      lastName: 'dele',
-      email: 'dele@uskudar.edu.tr',
+      firstName: 'TÜRKER',
+      lastName: 'EKİN ERGÜZEL',
+      email: 'turker.erguzel@uskudar.edu.tr',
       userType: this.userType.coordinator,
     },
+    {
+      id: '3',
+      firstName: 'KİLİÇ',
+      lastName: 'ERGÜN ERİN',
+      email: 'kilic.ergun@uskudar.edu.tr',
+      userType :this.userType.careerCenter
+    }
   ];
 
   constructor(
@@ -100,6 +107,7 @@ export class UsersFormComponent implements OnInit {
       userType: this.form.userType.value,
     };
     this.userServ.AddNewUser(model);
+    this.router.navigate(['/a/users-management/list']);
     // let insertModel: AddNewAdminRequest = {
     //   email: this.form.email.value,
     //   phone: this.form.phone.value,

@@ -27,6 +27,9 @@ import { HeaderMenuComponent } from './components/header/header-menu/header-menu
 import { DrawersModule, DropdownMenusModule,  EngagesModule} from '../../@shared/partials';
 import {EngagesComponent} from "../../@shared/partials/layout/engages/engages.component";
 import { AdminAsideMenuComponent } from './components/aside/admin-aside-menu/admin-aside-menu.component';
+import { StudentAsideMenuComponent } from './components/aside/student-aside-menu/student-aside-menu.component';
+import { CoordinatorAsideMenuComponent } from './components/aside/coordinator-aside-menu/coordinator-aside-menu.component';
+import { CareerCenterAsideMenuComponent } from './components/aside/career-center-aside-menu/career-center-aside-menu.component';
 
 const routes: Routes = [
   {
@@ -49,7 +52,10 @@ const routes: Routes = [
     PageTitleComponent,
     HeaderMenuComponent,
     EngagesComponent,
-    AdminAsideMenuComponent
+    AdminAsideMenuComponent,
+    StudentAsideMenuComponent,
+    CoordinatorAsideMenuComponent,
+    CareerCenterAsideMenuComponent
   ],
   imports: [
     CommonModule,
