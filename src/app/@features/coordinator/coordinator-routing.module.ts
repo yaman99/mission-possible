@@ -6,6 +6,8 @@ import { RequestManagementComponent } from './request-management/request-managem
 import { NotificationsComponent } from './notifications/notifications.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { MessagesComponent } from './messages/messages.component';
+import { AddAnnouncementComponent } from './announcements/add-announcement/add-announcement.component';
+import { AnnouncementsListComponent } from './announcements/announcements-list/announcements-list.component';
 
 const routes: Routes = [
   {
@@ -27,7 +29,27 @@ const routes: Routes = [
       },
       {
         path:'announcements',
-        component :AnnouncementsComponent
+        component :AnnouncementsComponent,
+        children : [
+          {
+            path : 'add-announcement',
+            component : AddAnnouncementComponent
+          },
+          {
+            path : 'announcementsList',
+            component :AnnouncementsListComponent
+          },
+          {
+            path: '',
+            redirectTo: 'announcementsList',
+            pathMatch: 'full',
+          },
+          {
+            path: '**',
+            redirectTo: 'error/404',
+          },
+        ]
+
       },
       {
         path:'messages',

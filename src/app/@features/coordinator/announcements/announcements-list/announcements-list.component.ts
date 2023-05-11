@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { dateTimestampProvider } from 'rxjs/internal/scheduler/dateTimestampProvider';
 import { AddAnnouncementPAths } from '@features/coordinator/_commonPaths/AddAnnouncementPaths.constants';
 
 @Component({
-  selector: 'app-announcements',
-  templateUrl: './announcements.component.html',
-  styleUrls: ['./announcements.component.scss']
+  selector: 'app-announcements-list',
+  templateUrl: './announcements-list.component.html',
+  styleUrls: ['./announcements-list.component.scss']
 })
-export class AnnouncementsComponent  {
+export class AnnouncementsListComponent {
   paths = {
     addAnnouncement: AddAnnouncementPAths.addAnnouncementComponents
   }
