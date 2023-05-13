@@ -1,1 +1,124 @@
-<p>add-announcement works!</p>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card mb-5 mb-xl-10">
+      <!--begin::Card header-->
+      <div class="card-header border-0">
+        <!--begin::Card title-->
+        <div class="card-title m-0">
+          <h3 class="fw-bolder m-0">
+            <ng-container *ngIf="!updateMode">Create an announcement </ng-container>
+            <!-- <ng-template #update>
+              {{ 'USERS_MANAGEMENT.FORM.UPDATE_USER' | translate : { name: currentUser } }}
+            </ng-template> -->
+          </h3>
+        </div>
+        <!--end::Card title-->
+      </div>
+      <!--begin::Card header-->
+      <!--begin::Content-->
+      <div class="collapse show">
+        <!--begin::Form-->
+        <form
+          id="kt_account_profile_details_form"
+          class="form fv-plugins-bootstrap5 fv-plugins-framework"
+          [formGroup]="usersForm"
+        >
+          <!--begin::Card body-->
+          <div class="card-body border-top p-9">
+            <!--begin::Input group-->
+            <div class="row mb-6">
+              <div class="col-lg-6">
+                <div class="mb-5">
+                  <label class="required form-label">Title</label>
+                  <input
+                    type="text"
+                    formControlName="title"
+                    class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                    [ngClass]="{
+                      'is-invalid':
+                        form.title.invalid && (form.title.dirty || form.title.touched),
+                      'is-valid': form.title.valid
+                    }"
+                  />
+                  <ng-container
+                    [ngTemplateOutlet]="formError"
+                    [ngTemplateOutletContext]="{
+                      validation: 'required',
+                      message: 'This field is required and has to be more than 5 character',
+                      inputName: 'This field is required and has to be more than 5 character',
+                      control: form.title
+                    }"
+                  ></ng-container>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-6">
+              <div class="col-lg">
+                <div class="mb-5">
+                  <label class="required form-label">Content</label>
+                  <textarea
+                    type="text"
+                    formControlName="content"
+                    class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                    [ngClass]="{
+                      'is-invalid':
+                        form.content.invalid && (form.content.dirty || form.content.touched),
+                      'is-valid': form.content.valid
+                    }"
+                  >
+                  </textarea>
+                  <ng-container
+                    [ngTemplateOutlet]="formError"
+                    [ngTemplateOutletContext]="{
+                      validation: 'required',
+                      message: 'This field is required and has to be more than 20 character',
+                      inputName: 'USERS_MANAGEMENT.INPUT.LAST_NAME',
+                      control: form.content
+                    }"
+                  ></ng-container>
+                </div>
+              </div>
+              <!-- End new fields -->
+
+              <!-- Adding new User Type Field -->
+            </div>
+          </div>
+          <!--end::Card body-->
+          <ng-template
+            #formError
+            let-control="control"
+            let-message="message"
+            let-validation="validation"
+            let-inputName="inputName"
+          >
+            <ng-container
+              *ngIf="control.hasError(validation) && (control.dirty || control.touched)"
+            >
+              <div class="invalid-feedback">
+                {{ message | translate : { name: inputName | translate } }}
+              </div>
+            </ng-container>
+          </ng-template>
+          <!--begin::Actions-->
+          <div class="card-footer d-flex justify-content-end py-6 px-9">
+            <!-- <a [routerLink]="paths.usersList" class="btn btn-light btn-active-light-primary me-2">
+              Cancel
+            </a> -->
+            <button
+              type="submit"
+              (click)="saveChanges()"
+              class="btn btn-primary"
+              id="kt_account_profile_details_submit"
+              [disabled]="!checkifformValid()"
+            >
+              Save Changes
+            </button>
+          </div>
+          <!--end::Actions-->
+        </form>
+        <!--end::Form-->
+      </div>
+      <!--end::Content-->
+    </div>
+  </div>
+</div>

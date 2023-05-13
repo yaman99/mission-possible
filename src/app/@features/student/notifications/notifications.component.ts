@@ -5,15 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss']
 })
-export class NotificationsComponent  {
-  showToolbar: boolean = false;
+export class NotificationsComponent implements OnInit {
 
   constructor() { }
 
-
-  toggleToolbar(){
-    this.showToolbar = !this.showToolbar;
-
+  ngOnInit(): void {
   }
 
 }

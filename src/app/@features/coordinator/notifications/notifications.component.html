@@ -1,1 +1,78 @@
-<p>notifications works!</p>
+<div class="card-toolbar">
+  <!--begin::Toolbar-->
+  <div class="d-flex justify-content-end" data-kt-filemanager-table-toolbar="base">
+
+    <!--begin::Add customer-->
+    <button
+      type="button"
+      class="btn btn-flex btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#kt_modal_upload"
+      (click)="toggleToolbar()"
+    >
+      <i class="fa fa-upload"
+        ><span class="path1"></span><span class="path2"></span
+      ></i>
+      Upload Files
+    </button>
+    <!--end::Add customer-->
+  </div>
+  <!--end::Toolbar-->
+
+  <!--begin::Group actions-->
+
+  <div class="modal-dialog modal-dialog-centered mw-650px">
+    <!--begin::Modal content-->
+    <div class="modal-content">
+        <!--begin::Form-->
+        <form class="form" action="none" id="kt_modal_upload_form"
+        *ngIf="showToolbar">
+            <!--begin::Modal header-->
+            <div class="modal-header">
+                <!--begin::Modal title-->
+                <h2 class="fw-bold">Upload files</h2>
+                <!--end::Modal title-->
+
+                <!--begin::Close-->
+                <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
+                    <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>                    </div>
+                <!--end::Close-->
+            </div>
+            <!--end::Modal header-->
+
+            <!--begin::Modal body-->
+            <div class="modal-body pt-10 pb-15 px-lg-17">
+                <!--begin::Input group-->
+                <div class="form-group">
+                    <!--begin::Dropzone-->
+                    <div class="dropzone dropzone-queue mb-2" id="kt_modal_upload_dropzone">
+                        <!--begin::Controls-->
+                        <div class="dropzone-panel mb-4">
+                            <a class="dropzone-select btn btn-sm btn-primary me-2 dz-clickable">Attach files</a>
+
+                        </div>
+                        <!--end::Controls-->
+
+                        <!--begin::Items-->
+                        <div class="dropzone-items wm-200px">
+
+                        </div>
+                        <!--end::Items-->
+                    </div>
+                    <!--end::Dropzone-->
+
+                    <!--begin::Hint-->
+                    <span class="form-text fs-6 text-muted">Max file size is 1MB per file.</span>
+                    <!--end::Hint-->
+                </div>
+                <!--end::Input group-->
+            </div>
+            <!--end::Modal body-->
+        </form>
+        <!--end::Form-->
+    </div>
+</div>
+
+
+
+

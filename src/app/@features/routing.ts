@@ -34,23 +34,19 @@ const Routing: Routes = [
   },
   {
     path:'st',
-    component:StudentComponent,
-    children:[
-      // {
-      //   path: 'dashbaord'
-      //   component:
-      // }
-    ]
+        loadChildren: () => import('./student/student.module').then((m) => m.StudentModule),
+
+
   },
-  {
-    path: '',
-    redirectTo: 'w',
-    pathMatch: 'full',
-  },
-  {
-    path: '**',
-    redirectTo: 'error/404',
-  },
+  // {
+  //   path: '',
+  //   redirectTo: 'w',
+  //   pathMatch: 'full',
+  // },
+  // {
+  //   path: '**',
+  //   redirectTo: 'error/404',
+  // },
 ];
 
 export { Routing };
