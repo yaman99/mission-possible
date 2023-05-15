@@ -8,13 +8,13 @@ import { SharedModule } from '@shared/shared.module';
 import { CoordinatorComponent } from './coordinator.component';
 import { RequestManagementComponent } from './request-management/request-management.component';
 import { NotificationsComponent } from './notifications/notifications.component';
-import { AnnouncementsComponent } from './announcements/announcements.component';
+
 import { MessagesComponent } from './messages/messages.component';
-import { AddAnnouncementComponent } from './announcements/add-announcement/add-announcement.component';
-import { AnnouncementsListComponent } from './announcements/announcements-list/announcements-list.component';
+
+
 
 @NgModule({
-  declarations: [DashbaordComponent , CoordinatorComponent, RequestManagementComponent, NotificationsComponent, AnnouncementsComponent, MessagesComponent, AddAnnouncementComponent, AnnouncementsListComponent],
+  declarations: [DashbaordComponent , CoordinatorComponent, RequestManagementComponent, NotificationsComponent, MessagesComponent, ],
   imports: [
     SharedModule,
     CoordinatorRoutingModule,

@@ -24,13 +24,8 @@ const Routing: Routes = [
   },
   {
     path:'cr',
-    component:CareerCenterComponent,
-    children:[
-      // {
-      //   path: 'dashbaord'
-      //   component:
-      // }
-    ]
+    loadChildren: () => import('./career-center/careerCenter.module').then((m) => m.CareerCenterModule),
+
   },
   {
     path:'st',

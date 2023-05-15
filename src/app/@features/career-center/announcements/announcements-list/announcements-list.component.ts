@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AddAnnouncementPAths } from '@features/coordinator/_commonPaths/AddAnnouncementPaths.constants';
+import { AnnouncementPaths } from '@features/career-center/_commonPaths/announcementPaths.constants';
+
+
 
 @Component({
   selector: 'app-announcements-list',
   templateUrl: './announcements-list.component.html',
   styleUrls: ['./announcements-list.component.scss']
 })
-export class AnnouncementsListComponent {
+export class AnnouncementsListComponent  {
   paths = {
-    addAnnouncement: AddAnnouncementPAths.addAnnouncementComponents
+    addAnnouncement : AnnouncementPaths.addComponents,
+
   }
 
   constructor(private router:Router) { }
@@ -18,4 +21,6 @@ export class AnnouncementsListComponent {
   onAddAnnouncement(){
     this.router.navigate(['/announcements/add-announcement']);
   }
+
 }
+

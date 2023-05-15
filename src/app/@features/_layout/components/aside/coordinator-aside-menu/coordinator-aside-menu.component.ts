@@ -10,9 +10,7 @@ export class CoordinatorAsideMenuComponent  {
   paths = {
     requestManagement: CoordinatorPaths.requestManagementComponents,
     notifications : CoordinatorPaths.notificationsComponents,
-    announcements : CoordinatorPaths.announcementsComponents,
     messages : CoordinatorPaths.messagesComponents
-
   };
 
 
