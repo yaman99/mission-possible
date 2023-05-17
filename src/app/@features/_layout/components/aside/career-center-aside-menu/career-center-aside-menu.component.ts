@@ -12,8 +12,6 @@ export class CareerCenterAsideMenuComponent {
   paths = {
     notifications : CareerCenterPaths.notificationsComponents,
     announcements : CareerCenterPaths.announcementsComponents,
+    sgkRequest :  CareerCenterPaths.sgkRequestComponents,
   }
-  // ngOnInit(): void {
-  // }
-
 }

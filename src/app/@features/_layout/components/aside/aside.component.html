@@ -3,21 +3,13 @@
   <!-- begin::Logo -->
   <ng-container *ngIf="asideTheme === 'dark'">
     <a routerLink="w/dashboard">
-      <img
-        alt="Logo"
-        class="w-25 logo"
-        src="./assets/media/logos/uskudar-logo.png"
-      />
+      <img alt="Logo" class="w-25 logo" src="./assets/media/logos/uskudar-logo.png" />
     </a>
   </ng-container>
 
   <ng-container *ngIf="asideTheme === 'light'">
     <a routerLink="dashboard">
-      <img
-        alt="Logo"
-        class="h-25px logo"
-        src="./assets/media/logos/logo-1.svg"
-      />
+      <img alt="Logo" class="h-25px logo" src="./assets/media/logos/logo-1.svg" />
     </a>
   </ng-container>
 
@@ -59,21 +51,13 @@
     <div
       id="#kt_aside_menu"
       data-kt-menu="true"
-      class="
-        menu
-        menu-column
-        menu-title-gray-800
-        menu-state-title-primary
-        menu-state-icon-primary
-        menu-state-bullet-primary
-        menu-arrow-gray-500
-      "
+      class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
     >
       <!-- <app-admin-aside-menu *ngIf="isAdmin$ | async" id="asideMenu"></app-admin-aside-menu> -->
       <!-- <app-admin-aside-menu></app-admin-aside-menu> -->
-      <app-coordinator-aside-menu></app-coordinator-aside-menu>
-     <!-- <app-student-aside-menu></app-student-aside-menu> -->
-       <!-- <app-career-center-aside-menu></app-career-center-aside-menu> -->
+      <!-- <app-coordinator-aside-menu></app-coordinator-aside-menu> -->
+      <!-- <app-student-aside-menu></app-student-aside-menu> -->
+      <app-career-center-aside-menu></app-career-center-aside-menu>
     </div>
   </div>
 </div>
