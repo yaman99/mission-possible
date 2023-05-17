@@ -5,6 +5,7 @@ import { CoordinatorComponent } from './coordinator.component';
 import { RequestManagementComponent } from './request-management/request-management.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { MessagesComponent } from './messages/messages.component';
+import { OfficialLetterRequestsComponent } from './official-letter-requests/official-letter-requests.component';
 
 
 
@@ -29,7 +30,13 @@ const routes: Routes = [
       {
         path:'messages',
         component : MessagesComponent
-      },{
+      },
+      {
+        path:'official-letter-requests',
+        component:OfficialLetterRequestsComponent,
+
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',

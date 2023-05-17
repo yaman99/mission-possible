@@ -10,11 +10,12 @@ import { RequestManagementComponent } from './request-management/request-managem
 import { NotificationsComponent } from './notifications/notifications.component';
 
 import { MessagesComponent } from './messages/messages.component';
+import { OfficialLetterRequestsComponent } from './official-letter-requests/official-letter-requests.component';
 
 
 
 @NgModule({
-  declarations: [DashbaordComponent , CoordinatorComponent, RequestManagementComponent, NotificationsComponent, MessagesComponent, ],
+  declarations: [DashbaordComponent , CoordinatorComponent, RequestManagementComponent, NotificationsComponent, MessagesComponent, OfficialLetterRequestsComponent, ],
   imports: [
     SharedModule,
     CoordinatorRoutingModule,

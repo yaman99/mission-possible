@@ -4,7 +4,7 @@
       <h1
         class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0"
       >
-        Requests Management
+       Official Letter Requests Management
       </h1>
     </div>
   </div>
@@ -12,7 +12,7 @@
 <div class="card">
   <div class="card-header border-0 pt-6">
     <div class="card-title">
-      <h2>Requests Management</h2>
+      <h2>Official Letter Requests Management</h2>
     </div>
   </div>
   <div class="card-body pt-0">
@@ -35,20 +35,16 @@
                 #ID
               </th>
               <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
-                Application Form
+                Company Name
               </th>
               <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
-                Transcript Status
+                Internship Type
               </th>
               <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
                 Status
               </th>
               <th
-                class="text-end min-w-70px sorting_disabled"
-                rowspan="1"
-                colspan="1"
-                aria-label="Actions"
-                style="width: 133.25px"
+              class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px"
               >
                 Actions
               </th>
@@ -66,12 +62,12 @@
               </td>
               <td>
                 <a href="">
-                  {{ student.applicationForm }}
+                  {{ student.companyName }}
                 </a>
               </td>
-              <td>{{ student.transcriptStatus }}</td>
+              <td>{{ student.internshipType }}</td>
               <td>{{ student.status }}</td>
-              <td class="text-end">
+              <td >
                 <div ngbDropdown container="body">
                   <button
                     type="button"
@@ -86,7 +82,7 @@
                     ngbDropdownMenu
                   >
                     <div class="menu-item px-3">
-                      <a class="menu-link px-3"> Approve </a>
+                      <a class="menu-link px-3"> Upload File </a>
                     </div>
                     <div class="menu-item px-3">
                       <a class="menu-link px-3"> Reject </a>
@@ -109,3 +105,4 @@
     </div>
   </div>
 </div>
+

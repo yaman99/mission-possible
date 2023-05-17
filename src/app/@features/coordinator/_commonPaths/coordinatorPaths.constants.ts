@@ -5,6 +5,7 @@ export const CoordinatorPathActions = {
   notifications: 'notifications',
   announcements : 'announcements',
   messages : 'messages',
+  officialLetter: 'official-letter-requests'
 };
 let coordinatorPaths: ICoordinatorPaths = {
   basePath: BasePath,
@@ -18,6 +19,8 @@ let coordinatorPaths: ICoordinatorPaths = {
   announcementsComponents : [],
   messages : `${CoordinatorPathActions.messages}`,
   messagesComponents : [],
+  officialLetter : `${CoordinatorPathActions.officialLetter}`,
+  officialLetterComponents : []
 
 };
 coordinatorPaths = {
@@ -27,6 +30,7 @@ coordinatorPaths = {
   notificationsComponents: ['/co/', coordinatorPaths.notifications],
   announcementsComponents: ['/co/', coordinatorPaths.announcements],
   messagesComponents: ['/co/', coordinatorPaths.messages],
+  officialLetterComponents: ['/co/', coordinatorPaths.officialLetter],
 };
 
 interface ICoordinatorPaths {
@@ -41,6 +45,8 @@ interface ICoordinatorPaths {
   readonly announcementsComponents : string[],
   readonly messagesComponents : string[],
   readonly listComponents: string[];
+  readonly officialLetter:string;
+  readonly officialLetterComponents :string[];
 }
 export const CoordinatorPaths: ICoordinatorPaths = coordinatorPaths;
 

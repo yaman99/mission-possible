@@ -1,78 +1,177 @@
-<div class="card-toolbar">
-  <!--begin::Toolbar-->
-  <div class="d-flex justify-content-end" data-kt-filemanager-table-toolbar="base">
+<div class="container">
+  <!-- <div
+    class="notice d-flex bg-light-info rounded border-info border border-dashed rounded-3 p-6 mb-4" > -->
 
-    <!--begin::Add customer-->
-    <button
-      type="button"
-      class="btn btn-flex btn-primary"
-      data-bs-toggle="modal"
-      data-bs-target="#kt_modal_upload"
-      (click)="toggleToolbar()"
-    >
-      <i class="fa fa-upload"
-        ><span class="path1"></span><span class="path2"></span
-      ></i>
-      Upload Files
-    </button>
-    <!--end::Add customer-->
+    <div class="d-flex flex-stack flex-grow-1">
+
+      <!-- <div class="fw-semibold">
+        <h4 class="text-gray-900 fw-bold">This is a very important instructions!</h4>
+
+        <div class="fs-6 text-gray-700">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat impedit, voluptatum eaque
+          ex omnis molestiae unde harum velit natus labore, perspiciatis sapiente minima neque,
+          maxime fugit iusto ducimus pariatur quis?
+        </div>
+
+    </div> -->
+
   </div>
-  <!--end::Toolbar-->
+  <div class="row">
+    <!-- start col 1 -->
+    <div class="col-md-6">
+      <!--begin::Feeds Widget 2-->
+      <div class="card mb-5 mb-xl-8">
+        <!--begin::Body-->
+        <div class="card-body pb-0">
+          <!--begin::Header-->
+          <div class="d-flex align-items-center mb-5">
+            <!--begin::User-->
+            <div class="d-flex align-items-center flex-grow-1">
+              <!--begin::Info-->
+              <div class="symbol symbol-40px symbol-circle">
+                <span class="symbol-label bg-light-primary text-primary fs-6 fw-bolder">1</span>
+              </div>
+              <span><strong class="required">Download internship application form</strong></span>
 
-  <!--begin::Group actions-->
-
-  <div class="modal-dialog modal-dialog-centered mw-650px">
-    <!--begin::Modal content-->
-    <div class="modal-content">
-        <!--begin::Form-->
-        <form class="form" action="none" id="kt_modal_upload_form"
-        *ngIf="showToolbar">
-            <!--begin::Modal header-->
-            <div class="modal-header">
-                <!--begin::Modal title-->
-                <h2 class="fw-bold">Upload files</h2>
-                <!--end::Modal title-->
-
-                <!--begin::Close-->
-                <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
-                    <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>                    </div>
-                <!--end::Close-->
+              <!--end::Info-->
             </div>
-            <!--end::Modal header-->
 
-            <!--begin::Modal body-->
-            <div class="modal-body pt-10 pb-15 px-lg-17">
-                <!--begin::Input group-->
-                <div class="form-group">
-                    <!--begin::Dropzone-->
-                    <div class="dropzone dropzone-queue mb-2" id="kt_modal_upload_dropzone">
-                        <!--begin::Controls-->
-                        <div class="dropzone-panel mb-4">
-                            <a class="dropzone-select btn btn-sm btn-primary me-2 dz-clickable">Attach files</a>
-
-                        </div>
-                        <!--end::Controls-->
-
-                        <!--begin::Items-->
-                        <div class="dropzone-items wm-200px">
-
-                        </div>
-                        <!--end::Items-->
-                    </div>
-                    <!--end::Dropzone-->
-
-                    <!--begin::Hint-->
-                    <span class="form-text fs-6 text-muted">Max file size is 1MB per file.</span>
-                    <!--end::Hint-->
-                </div>
-                <!--end::Input group-->
+            <!--end::User-->
+          </div>
+          <div
+            class="notice d-flex bg-light-primary rounded border-primary border border-dashed rounded-3 p-6 mb-4"
+          >
+            <!--begin::Wrapper-->
+            <div class="d-flex flex-stack flex-grow-1">
+              <!--begin::Content-->
+              <div class="fw-semibold">
+                <div class="fs-6 text-gray-700">make sure to fill all the required information</div>
+              </div>
+              <!--end::Content-->
             </div>
-            <!--end::Modal body-->
-        </form>
-        <!--end::Form-->
+            <!--end::Wrapper-->
+          </div>
+          <!--end::Header-->
+
+          <div class="mb-4 d-flex fa-pull-right">
+            <a href="/internships/create" class="text-white fw-bold" class="btn btn-primary">
+              <i class="bi bi-download"></i>Download application form
+            </a>
+          </div>
+        </div>
+        <!--end::Body-->
+      </div>
+      <!--end::Feeds Widget 2-->
     </div>
+    <!-- end col 1 -->
+    <!-- begin col 2 -->
+    <div class="col-md-6">
+      <!--begin::Feeds Widget 2-->
+      <div class="card mb-5 mb-xl-8">
+        <!--begin::Body-->
+        <div class="card-body pb-0">
+          <!--begin::Header-->
+          <div class="d-flex align-items-center mb-5">
+            <!--begin::User-->
+            <div class="d-flex align-items-center flex-grow-1">
+              <!--begin::Info-->
+              <div class="symbol symbol-40px symbol-circle">
+                <span class="symbol-label bg-light-success text-success fs-6 fw-bolder">2</span>
+              </div>
+              <span><strong class="required">Upload internship application form</strong></span>
+
+              <!--end::Info-->
+            </div>
+
+            <!--end::User-->
+          </div>
+          <div
+            class="notice d-flex bg-light-primary rounded border-primary border border-dashed rounded-3 p-6 mb-4"
+          >
+            <!--begin::Wrapper-->
+            <div class="d-flex flex-stack flex-grow-1">
+              <!--begin::Content-->
+              <div class="fw-semibold">
+                <div class="fs-6 text-gray-700">After filling the application, upload it here</div>
+              </div>
+              <!--end::Content-->
+            </div>
+            <!--end::Wrapper-->
+          </div>
+          <!--end::Header-->
+
+          <div class="mb-4 fa-pull-right">
+            <a href="/internships/create" class="text-white fw-bold" class="btn btn-primary">
+              <i class="bi bi-upload"></i>Upload the application form
+            </a>
+          </div>
+        </div>
+        <!--end::Body-->
+      </div>
+      <!--end::Feeds Widget 2-->
+    </div>
+    <!-- end col 2 -->
+    <!-- start col  -->
+  </div>
+  <div class="row">
+    <!-- start col 1 -->
+    <div class="col-md-6">
+      <!--begin::Feeds Widget 2-->
+      <div class="card mb-5 mb-xl-8">
+        <!--begin::Body-->
+        <div class="card-body pb-0">
+          <!--begin::Header-->
+          <div class="d-flex align-items-center mb-5">
+            <!--begin::User-->
+            <div class="d-flex align-items-center flex-grow-1">
+              <!--begin::Info-->
+              <div class="symbol symbol-40px symbol-circle">
+                <span class="symbol-label bg-light-warning text-warning fs-6 fw-bolder">3</span>
+              </div>
+              <span><strong class="required">Upload Transcript</strong></span>
+
+              <!--end::Info-->
+            </div>
+
+            <!--end::User-->
+          </div>
+          <div
+            class="notice d-flex bg-light-primary rounded border-primary border border-dashed rounded-3 p-6 mb-4"
+          >
+            <!--begin::Wrapper-->
+            <div class="d-flex flex-stack flex-grow-1">
+              <!--begin::Content-->
+              <div class="fw-semibold">
+                <div class="fs-6 text-gray-700">make sure to upload your latest transcript</div>
+              </div>
+              <!--end::Content-->
+            </div>
+            <!--end::Wrapper-->
+          </div>
+          <!--end::Header-->
+
+          <div class="mb-4 fa-pull-right">
+            <a href="/internships/create" class="text-white fw-bold" class="btn btn-primary">
+              <i class="bi bi-upload"></i>Upload Transcript
+            </a>
+          </div>
+        </div>
+        <!--end::Body-->
+      </div>
+      <!--end::Feeds Widget 2-->
+    </div>
+    <!-- end col 1 -->
+    <!-- begin col 2 -->
+    <div class="col-md-6">
+      <!--begin::Feeds Widget 2-->
+      <div class="card mb-5 mb-xl-8">
+        <!--begin::Body-->
+
+        <!--end::Body-->
+      </div>
+      <!--end::Feeds Widget 2-->
+    </div>
+    <!-- end col 2 -->
+    <!-- start col  -->
+  </div>
 </div>
-
-
-
-
