@@ -1,7 +1,8 @@
 export class UsersManagementModel {
   id: string;
   email: string;
-  phone: string;
-  isActive: boolean;
+  firstName: string;
+  lastName: string;
+  userType: string;
   isDeleted:boolean
 }

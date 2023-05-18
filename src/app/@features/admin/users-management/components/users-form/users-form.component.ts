@@ -12,6 +12,7 @@ import { UsersManagementState } from '../../common/StateStore/usersManagement.st
 import { UsersManagementStateActions } from '../../common/StateStore/usersManagement.action';
 import { UpdateUserRequest } from '../../common/models/requests/updateUserRequest';
 import { UserTypes } from '@shared/constants';
+import { AssignNewUserRequest } from '../../common/models/requests/assignNewUsetRequest';
 
 @Component({
   selector: 'app-users-form',
@@ -86,15 +87,15 @@ export class UsersFormComponent implements OnInit {
     const userId = this.route.snapshot.paramMap.get('id')!;
     console.log(userId);
 
-    this.currentUser = this.stateBus.getSnapshot(UsersManagementState.getUserById(userId))!;
+    // this.currentUser = this.stateBus.getSnapshot(UsersManagementState.getUserById(userId))!;
     console.log(this.currentUser);
 
-    this.usersForm.patchValue({
-      email: this.currentUser.email,
-      phone: this.currentUser.phone,
-      isActive: this.currentUser.isActive,
-      id: this.currentUser.id,
-    });
+    // this.usersForm.patchValue({
+    //   email: this.currentUser.email,
+    //   phone: this.currentUser.phone,
+    //   isActive: this.currentUser.isActive,
+    //   id: this.currentUser.id,
+    // });
   }
 
   checkifformValid() {
@@ -102,7 +103,7 @@ export class UsersFormComponent implements OnInit {
   }
   saveChanges() {
     // console.log(this.form.isActive.value);
-    let model = {
+    let model : AssignNewUserRequest = {
       email: this.form.email.value,
       userType: this.form.userType.value,
     };
@@ -114,7 +115,7 @@ export class UsersFormComponent implements OnInit {
     //   isActive: this.form.isActive.value == 'true' ? true : false
     // };
     // if (!this.updateMode) {
-    //   this.stateBus.excuteAction(new UsersManagementStateActions.AddNewAdmin(insertModel));
+      this.stateBus.excuteAction(new UsersManagementStateActions.AssignNewUser(model));
     // } else {
     //   let updateModel: UpdateUserRequest = {
     //     ...insertModel,

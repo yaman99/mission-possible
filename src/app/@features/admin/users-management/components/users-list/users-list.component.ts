@@ -13,6 +13,7 @@ import { GetAllUsersRequest } from '../../common/models/requests/getAllUsersRequ
 import { Expansion } from '@angular/compiler';
 import { UsersManagementHttpService } from '../../common/services/usersManagementHttp.service';
 import { UserTypes } from '@shared/constants';
+import { UsersManagementModel } from '../../common/models/usersManagementModel';
 
 @Component({
   selector: 'app-users-list',
@@ -26,24 +27,20 @@ export class UsersListComponent implements OnInit {
   };
   selectedType: string;
   userType = UserTypes;
-  @Select(UsersManagementState.users) users$: Observable<User[]>;
-  @Select(UsersManagementState.pagination) pagination$: Observable<PagedResultBase>;
+  // @Select(UsersManagementState.users) users$: Observable<User[]>;
+  @Select(UsersManagementState.users) users$: Observable<UsersManagementModel[]>;
 
   users: any;
   constructor(private stateBus: IBus, private userServ: UsersManagementHttpService) {}
 
   ngOnInit(): void {
-    console.log(this.getUsers().subscribe(data=>{
-      this.users = data
-    }));
-
-    // this.SelectUserType('admin');
+    this.stateBus.excuteAction(new UsersManagementStateActions.GetObsAllCareerCenter());
   }
   getUsers() {
     return this.userServ.insertedUsers;
   }
   deleteUser(id: string) {
-    this.stateBus.excuteAction(new UsersManagementStateActions.DeleteUser(id));
+    // this.stateBus.excuteAction(new UsersManagementStateActions.DeleteUser(id));
   }
 
   SelectUserType(userType: string) {
@@ -59,6 +56,6 @@ export class UsersListComponent implements OnInit {
         orderBy: 'CreatedDate',
       },
     };
-    this.stateBus.excuteAction(new UsersManagementStateActions.GetAllUsersByType(payload));
+    // this.stateBus.excuteAction(new UsersManagementStateActions.GetAllUsersByType(payload));
   }
 }

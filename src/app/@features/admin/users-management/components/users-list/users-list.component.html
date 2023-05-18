@@ -100,23 +100,18 @@
             </tr>
           </thead>
           <tbody class="fw-semibold text-gray-600">
-            <tr >
+            <tr *ngFor="let user of users$ | async">
               <td>
-                <div class="form-check form-check-sm form-check-custom form-check-solid">
-                  <input class="form-check-input" type="checkbox" value="1" />
-                </div>
+                {{user.email}}
               </td>
               <td>
-                kristin.benli@uskudar.edu.tr
+                {{user.firstName}}
               </td>
               <td>
-                KRİSTİN
+                {{user.lastName}}
               </td>
               <td>
-                SURPUHİ BENLİ
-              </td>
-              <td>
-                Coordinator
+                {{user.userType}}
               </td>
               <td class="text-end">
                 <div ngbDropdown container="body">
@@ -196,7 +191,7 @@
           No information
         </div>
       </div> -->
-      <div class="row">
+      <!-- <div class="row">
         <div
           class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end"
         >
@@ -207,7 +202,7 @@
             ></app-pagination>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

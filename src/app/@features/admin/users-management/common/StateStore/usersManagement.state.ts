@@ -11,6 +11,7 @@ import { User } from '@features/auth/models/user';
 import { UsersManagementModel } from '../models/usersManagementModel';
 import { UsersManagementPaths } from '../paths/usersManagementPaths.constants';
 import { Navigate } from '@ngxs/router-plugin';
+
 @State<UsersManagementStateModel>({
   name: 'usersManagement',
   defaults: {
@@ -20,122 +21,47 @@ import { Navigate } from '@ngxs/router-plugin';
   },
 })
 @Injectable()
-export class UsersManagementState extends LoadingHandler<UsersManagementStateModel> {
-  @Selector()
-  static isLoading(state: UsersManagementStateModel) {
-    return state.isLoading;
-  }
-  @Selector()
-  static pagination(state: UsersManagementStateModel) {
-    return state.pagination;
-  }
+export class UsersManagementState {
   @Selector()
   static users(state: UsersManagementStateModel) {
     return state.users;
   }
 
-  static getUserById(id: string | undefined) {
-    return createSelector([UsersManagementState], (state: UsersManagementStateModel) => {
-      return state.users.find((x) => x.id === id);
-    });
-  }
   constructor(
     private usersManagementHttp: UsersManagementHttpService,
     private notify: NoticeService
-  ) {
-    super();
-  }
-  @Action(UsersManagementStateActions.GetAllUsersByType)
-  onGetAllUsers(
-    ctx: StateContext<UsersManagementStateModel>,
-    { payload }: UsersManagementStateActions.GetAllUsersByType
-  ) {
-    this.startLoading(ctx);
-    const state = ctx.getState();
-    return this.usersManagementHttp.getAllUsers(payload).pipe(
+  ) {}
+
+  @Action(UsersManagementStateActions.GetObsAllCareerCenter)
+  onGetAllObsCareerCenter(ctx: StateContext<UsersManagementStateModel>) {
+    return this.usersManagementHttp.getAllObsCareerCenter().pipe(
       tap({
         next: (res) => {
           ctx.patchState({
-            ...state,
-            users: res.items,
-            pagination: {
-              currentPage: res.currentPage,
-              resultsPerPage: res.resultsPerPage,
-              totalPages: res.totalPages,
-              totalResults: res.totalResults,
-            },
+            users: res,
           });
         },
-        finalize: () => this.stopLoading(ctx),
+        error: () => {
+          console.log(1231243);
+        },
       })
     );
   }
 
-  @Action(UsersManagementStateActions.UpdateUser)
-  onUpdateUser(
+  @Action(UsersManagementStateActions.AssignNewUser)
+  onAssingNewUser(
     ctx: StateContext<UsersManagementStateModel>,
-    { payload }: UsersManagementStateActions.UpdateUser
+    { payload }: UsersManagementStateActions.AssignNewUser
   ) {
-    this.startLoading(ctx);
-    return this.usersManagementHttp.updateUser(payload).pipe(
-      tap({
-        next: () => {
-          this.notify.successNotice('USER_MANAGEMENT.ALERT.UPDATE.SUCCESS');
-          ctx.setState(
-            patch({
-              users: updateItem<UsersManagementModel>(
-                (user) => user?.id === payload.id,
-                patch<UsersManagementModel>({
-                  email: payload.email,
-                  phone: payload.phone,
-                  isActive: payload.isActive,
-                })
-              ),
-            })
-          );
-        },
-        finalize: () => this.stopLoading(ctx),
-      })
-    );
-  }
 
-  @Action(UsersManagementStateActions.DeleteUser)
-  onDeleteUser(
-    ctx: StateContext<UsersManagementStateModel>,
-    { userId }: UsersManagementStateActions.DeleteUser
-  ) {
-    this.startLoading(ctx);
-    return this.usersManagementHttp.deleteUser(userId).pipe(
+    return this.usersManagementHttp.assignNewUser(payload).pipe(
       tap({
         next: () => {
-          this.notify.successNotice('USER_MANAGEMENT.ALERT.DELETE.SUCCESS');
-          ctx.setState(
-            patch({
-              users: updateItem<UsersManagementModel>(
-                (user) => user?.id === userId,
-                patch<UsersManagementModel>({ isDeleted: true })
-              ),
-            })
-          );
+          console.log("inserted");
         },
-        finalize: () => this.stopLoading(ctx),
-      })
-    );
-  }
-
-  @Action(UsersManagementStateActions.AddNewAdmin)
-  onAddNewUser(
-    ctx: StateContext<UsersManagementStateModel>,
-    { payload }: UsersManagementStateActions.AddNewAdmin
-  ) {
-    this.startLoading(ctx);
-    return this.usersManagementHttp.addNewAdmin(payload).pipe(
-      tap({
-        next: () => {
-          this.notify.successNotice('USER_MANAGEMENT.ALERT.ADD_ADMIN.SUCCESS');
-          ctx.dispatch(new Navigate(UsersManagementPaths.listComponents));
+        error: () => {
+          console.log('error');
         },
-        finalize: () => this.stopLoading(ctx),
       })
     );
   }
