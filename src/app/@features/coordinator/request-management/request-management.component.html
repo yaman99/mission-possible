@@ -26,11 +26,7 @@
                 rowspan="1"
                 colspan="1"
                 style="width: 29.8906px"
-              >
-                <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-                  <input class="form-check-input" type="checkbox" value="1" />
-                </div>
-              </th>
+              ></th>
               <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 171.719px">
                 #ID
               </th>
@@ -43,19 +39,13 @@
               <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
                 Status
               </th>
-              <th
-                class="text-end min-w-70px sorting_disabled"
-                rowspan="1"
-                colspan="1"
-                aria-label="Actions"
-                style="width: 133.25px"
-              >
+              <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
                 Actions
               </th>
             </tr>
           </thead>
           <tbody class="fw-semibold text-gray-600">
-            <tr *ngFor="let student of fakeStudent">
+            <tr *ngFor="let student of requestsData">
               <td>
                 <div class="form-check form-check-sm form-check-custom form-check-solid">
                   <input class="form-check-input" type="checkbox" value="1" />
@@ -66,12 +56,12 @@
               </td>
               <td>
                 <a href="">
-                  {{ student.applicationForm }}
+                  {{ student.applicationUrl }}
                 </a>
               </td>
-              <td>{{ student.transcriptStatus }}</td>
+              <td>{{ student.transcriptUrl }}</td>
               <td>{{ student.status }}</td>
-              <td class="text-end">
+              <td>
                 <div ngbDropdown container="body">
                   <button
                     type="button"
@@ -86,10 +76,14 @@
                     ngbDropdownMenu
                   >
                     <div class="menu-item px-3">
-                      <a class="menu-link px-3"> Approve </a>
+                      <a class="menu-link px-3" (click)="updateStatus('approved', student.id)">
+                        Approve
+                      </a>
                     </div>
                     <div class="menu-item px-3">
-                      <a class="menu-link px-3"> Reject </a>
+                      <a class="menu-link px-3" (click)="updateStatus('rejected', student.id)">
+                        Reject
+                      </a>
                     </div>
                   </div>
                 </div>

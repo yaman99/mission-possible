@@ -8,6 +8,8 @@ export const environment = {
   USERDATA_KEY: 'authf649fc9a5f55asd',
   isMockEnabled: true,
   authApiUrl: 'http://localhost:5001/auth',
+  notificationApiUrl: 'http://localhost:5001/notification',
+  coordinatorApiUrl: 'http://localhost:5001/coordinator',
   workspaceApiUrl: 'http://indanalocal.com/api/workspace',
   itemApiUrl: 'http://indanalocal.com/api/item',
   campaignApiUrl: 'http://indanalocal.com/api/campaign',

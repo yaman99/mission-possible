@@ -6,14 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./notifications.component.scss']
 })
 export class NotificationsComponent  {
-  showToolbar: boolean = false;
+
 
   constructor() { }
 
 
-  toggleToolbar(){
-    this.showToolbar = !this.showToolbar;
-
-  }
 
 }

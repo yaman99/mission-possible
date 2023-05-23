@@ -7,10 +7,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PipesModule } from '@core/pipes/pipes.module';
+import { NotificationListComponent } from './components/notification-list/notification-list.component';
 
 
 @NgModule({
   declarations: [
+
+    NotificationListComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +35,8 @@ import { PipesModule } from '@core/pipes/pipes.module';
     InlineSVGModule,
     PaginationModule,
     NgbModule,
-    PipesModule
+    PipesModule,
+    NotificationListComponent
 
   ]
 })
