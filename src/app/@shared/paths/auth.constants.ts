@@ -1,7 +1,7 @@
 export const AuthBasePath = 'auth';
 export const AuthActions = {
   Login: 'login',
-  ForgetPassword: 'forget-password'
+  ForgetPassword: 'forget-password',
 };
 
 let authPaths: IAuthPaths = {
@@ -11,17 +11,20 @@ let authPaths: IAuthPaths = {
   LoginPathComponents: [],
   ForgetPasswordPathComponents: [],
   WorkspaceLoginRedirectPathComponents: [],
-  PromoterLoginRedirectPathComponents:[],
-  AdminLoginRedirectPathComponents:[]
+  PromoterLoginRedirectPathComponents: [],
+  AdminLoginRedirectPathComponents: [],
+  StudentLoginRedirectPathComponents: [],
 };
 
 authPaths = {
   ...authPaths,
   LoginPathComponents: [AuthBasePath, authPaths.Login],
   ForgetPasswordPathComponents: [AuthBasePath, authPaths.ForgetPassword],
-  WorkspaceLoginRedirectPathComponents : ['/w/dashboard'],
-  PromoterLoginRedirectPathComponents:['/p/dashboard'],
-  AdminLoginRedirectPathComponents:['/a/dashboard'],
+  WorkspaceLoginRedirectPathComponents: ['/w/dashboard'],
+  PromoterLoginRedirectPathComponents: ['/p/dashboard'],
+  AdminLoginRedirectPathComponents: ['/a/dashboard'],
+
+  StudentLoginRedirectPathComponents: ['st/dashboard'],
 };
 
 interface IAuthPaths {
@@ -34,5 +37,7 @@ interface IAuthPaths {
   readonly AdminLoginRedirectPathComponents: string[];
   readonly LoginPathComponents: string[];
   readonly ForgetPasswordPathComponents: string[];
+
+  readonly StudentLoginRedirectPathComponents: string[];
 }
 export const AuthPaths: IAuthPaths = authPaths;

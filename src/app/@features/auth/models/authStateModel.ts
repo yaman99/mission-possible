@@ -6,6 +6,5 @@ export class AuthStateModel implements ILoadingHandler {
   id: string | null;
   email: string | null;
   userType: string | null;
-  phone: string | null;
-  punishments: string[] | null;
+  fullName: string | null;
 }

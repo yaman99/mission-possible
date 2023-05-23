@@ -19,7 +19,6 @@ const routes: Routes = [
   {
     path: '',
     component: StudentComponent,
-
     children: [
       {
         path: StudentPaths.basePath,
@@ -33,7 +32,11 @@ const routes: Routes = [
             path : StudentPaths.internshipApplicationList,
             component: InternshiAppplicationsListComponent,
           },
-
+          {
+            path: '',
+            redirectTo: StudentPaths.internshipApplicationList,
+            pathMatch: 'full'
+          },
         ]
       },
       {
@@ -66,7 +69,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: StudentPaths.internshipApplicationList,
+        redirectTo: StudentPaths.basePath,
         pathMatch: 'full'
       },
       {

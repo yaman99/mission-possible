@@ -33,30 +33,33 @@ export class UsersFormComponent implements OnInit {
   fakeUsers = [
     {
       id: '1',
-      firstName: 'KRİSTİN',
-      lastName: 'SURPUHİ BENLİ',
+      fullName: 'KRİSTİN SURPUHİ BENLİ',
       email: 'kristin.benli@uskudar.edu.tr',
       userType: this.userType.coordinator,
     },
     {
       id: '2',
-      firstName: 'TÜRKER',
-      lastName: 'EKİN ERGÜZEL',
+      fullName: 'TÜRKER EKİN ERGÜZEL',
       email: 'turker.erguzel@uskudar.edu.tr',
       userType: this.userType.coordinator,
     },
     {
       id: '3',
-      firstName: 'KİLİÇ',
-      lastName: 'ERGÜN ERİN',
+      fullName: 'KİLİÇ ERGÜN ERİN',
       email: 'kilic.ergun@uskudar.edu.tr',
-      userType :this.userType.careerCenter
-    }
+      userType: this.userType.careerCenter,
+    },
+    {
+      id: '4',
+      fullName: 'Mohammed DELE',
+      email: 'info@indana.io',
+      userType: this.userType.careerCenter,
+    },
   ];
 
   constructor(
     private route: ActivatedRoute,
-    private router:Router,
+    private router: Router,
     private fb: FormBuilder,
     private stateBus: IBus,
     private userServ: UsersManagementHttpService
@@ -102,26 +105,12 @@ export class UsersFormComponent implements OnInit {
     return this.usersForm.valid;
   }
   saveChanges() {
-    // console.log(this.form.isActive.value);
-    let model : AssignNewUserRequest = {
+    let model: AssignNewUserRequest = {
       email: this.form.email.value,
       userType: this.form.userType.value,
+      fullName: this.fakeUsers.find((x) => x.email === this.form.email.value)?.fullName!,
     };
-    this.userServ.AddNewUser(model);
-    this.router.navigate(['/a/users-management/list']);
-    // let insertModel: AddNewAdminRequest = {
-    //   email: this.form.email.value,
-    //   phone: this.form.phone.value,
-    //   isActive: this.form.isActive.value == 'true' ? true : false
-    // };
-    // if (!this.updateMode) {
-      this.stateBus.excuteAction(new UsersManagementStateActions.AssignNewUser(model));
-    // } else {
-    //   let updateModel: UpdateUserRequest = {
-    //     ...insertModel,
-    //     id: this.currentUser.id
-    //   };
-    //   this.stateBus.excuteAction(new UsersManagementStateActions.UpdateUser(updateModel));
-    // }
+    this.stateBus.excuteAction(new UsersManagementStateActions.AssignNewUser(model));
+
   }
 }

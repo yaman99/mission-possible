@@ -53,14 +53,11 @@ export class UsersManagementState {
     ctx: StateContext<UsersManagementStateModel>,
     { payload }: UsersManagementStateActions.AssignNewUser
   ) {
-
     return this.usersManagementHttp.assignNewUser(payload).pipe(
       tap({
         next: () => {
-          console.log("inserted");
-        },
-        error: () => {
-          console.log('error');
+          this.notify.successNotice('User Assigned');
+          ctx.dispatch(new Navigate(UsersManagementPaths.listComponents));
         },
       })
     );

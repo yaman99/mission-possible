@@ -12,6 +12,10 @@ import { AuthPaths } from '@shared/paths';
 import { User } from '../models/user';
 import { StateClear, StateReset, StateResetAll } from 'ngxs-reset-plugin';
 import { UserTypes } from '@shared/constants/userType.constants';
+import { StudentPaths } from '@features/student/_commonPaths/studentPaths.constants';
+import { CoordinatorPaths } from '@features/coordinator/_commonPaths/coordinatorPaths.constants';
+import { CareerCenterPaths } from '@features/career-center/_commonPaths/careerCenterPaths.constants';
+import { UsersManagementPaths } from '@features/admin/users-management/common/paths/usersManagementPaths.constants';
 
 @State<AuthStateModel>({
   name: 'auth',
@@ -22,8 +26,7 @@ import { UserTypes } from '@shared/constants/userType.constants';
     email: null,
     userType: null,
     isLoading: false,
-    phone: null,
-    punishments: [],
+    fullName: null,
   },
 })
 @Injectable()
@@ -52,6 +55,19 @@ export class AuthBaseState extends LoadingHandler<AuthStateModel> {
   }
 
   @Selector()
+  static isStudent(state: AuthStateModel): boolean {
+    return state.userType === UserTypes.student;
+  }
+  @Selector()
+  static isCoordinator(state: AuthStateModel): boolean {
+    return state.userType === UserTypes.coordinator;
+  }
+  @Selector()
+  static isCarrerCenter(state: AuthStateModel): boolean {
+    return state.userType === UserTypes.careerCenter;
+  }
+
+  @Selector()
   static isLoading(state: AuthStateModel): boolean {
     return state.isLoading;
   }
@@ -59,11 +75,6 @@ export class AuthBaseState extends LoadingHandler<AuthStateModel> {
   @Selector()
   static getUserType(state: AuthStateModel): string | null {
     return state.userType;
-  }
-
-  @Selector()
-  static getPunishments(state: AuthStateModel): string[] | null {
-    return state.punishments;
   }
 
   @Selector()
@@ -75,7 +86,7 @@ export class AuthBaseState extends LoadingHandler<AuthStateModel> {
     return {
       email: state.email,
       id: state.id,
-      phone: state.phone,
+      fullName: state.fullName,
       userType: state.userType,
     };
   }
@@ -92,18 +103,17 @@ export class AuthBaseState extends LoadingHandler<AuthStateModel> {
 
   @Action(AuthStateActions.Login)
   onLogin(ctx: StateContext<AuthStateModel>, { payload }: AuthStateActions.Login) {
-    ctx.dispatch(new Navigate(['co/dashboard']));
-    // this.startLoading(ctx);
-    // return this.authHttpService.login(payload.email, payload.password).pipe(
-    //   tap({
-    //     next: (res) => {
-    //       ctx.dispatch(new AuthStateActions.LoginSuccess(res));
-    //     },
-    //     error: (err) => {
-    //       ctx.dispatch(new AuthStateActions.LoginFailed(err));
-    //     },
-    //   })
-    // );
+    this.startLoading(ctx);
+    return this.authHttpService.login(payload.email, payload.password).pipe(
+      tap({
+        next: (res) => {
+          ctx.dispatch(new AuthStateActions.LoginSuccess(res));
+        },
+        error: (err) => {
+          ctx.dispatch(new AuthStateActions.LoginFailed(err));
+        },
+      })
+    );
   }
 
   @Action(AuthStateActions.SignUp)
@@ -163,7 +173,7 @@ export class AuthBaseState extends LoadingHandler<AuthStateModel> {
   onLoginRedirect(ctx: StateContext<AuthStateModel>) {
     const state = ctx.getState();
     if (state.accessToken !== null) {
-      ctx.dispatch(new AuthStateActions.GetUser())
+      ctx.dispatch(new AuthStateActions.GetUser());
     }
   }
   @Action(AuthStateActions.LogoutRedirect)
@@ -208,17 +218,17 @@ export class AuthBaseState extends LoadingHandler<AuthStateModel> {
       })
     );
   }
-  @Action(AuthStateActions.UpdateUser)
-  updateUser(ctx: StateContext<AuthStateModel>, { payload }: AuthStateActions.UpdateUser) {
-    return this.authHttpService.updateUser(payload).pipe(
-      tap({
-        next: () => {
-          ctx.patchState(payload);
-          this.notifiy.successNotice('AUTH.ALERT.UPDATE.SUCCESS');
-        },
-      })
-    );
-  }
+  // @Action(AuthStateActions.UpdateUser)
+  // updateUser(ctx: StateContext<AuthStateModel>, { payload }: AuthStateActions.UpdateUser) {
+  //   return this.authHttpService.updateUser(payload).pipe(
+  //     tap({
+  //       next: () => {
+  //         ctx.patchState(payload);
+  //         this.notifiy.successNotice('AUTH.ALERT.UPDATE.SUCCESS');
+  //       },
+  //     })
+  //   );
+  // }
   @Action(AuthStateActions.GetUser)
   getUser(ctx: StateContext<AuthStateModel>) {
     const state = ctx.getState();
@@ -227,19 +237,21 @@ export class AuthBaseState extends LoadingHandler<AuthStateModel> {
         next: (data) => {
           ctx.patchState({
             ...state,
-            phone: data.phone,
+            fullName: data.fullName,
             email: data.email,
             userType: data.userType,
           });
-          if (state.userType === UserTypes.Promoter) {
-            // ctx.dispatch(new PromoterStateActions.Get(state.id!))
-          } else if (state.userType === UserTypes.Advertiser) {
-            // ctx.dispatch(new WorkspaceStateActions.Get(state.id!));
-          }else if (state.userType === UserTypes.Admin) {
-            ctx.dispatch(new Navigate(AuthPaths.AdminLoginRedirectPathComponents));
+          if (state.userType === UserTypes.student) {
+            ctx.dispatch(new Navigate(StudentPaths.internshipApplicationListComponents));
+          } else if (state.userType === UserTypes.coordinator) {
+            ctx.dispatch(new Navigate(CoordinatorPaths.requestManagementComponents));
+          } else if (state.userType === UserTypes.careerCenter) {
+            ctx.dispatch(new Navigate(CareerCenterPaths.sgkRequestComponents));
+          } else if (state.userType === UserTypes.Admin) {
+            ctx.dispatch(new Navigate(UsersManagementPaths.listComponents));
           }
         },
-        finalize: ()=> this.stopLoading(ctx)
+        finalize: () => this.stopLoading(ctx),
       })
     );
   }

@@ -7,7 +7,7 @@ export const environment = {
   appVersion: 'v8.0.38',
   USERDATA_KEY: 'authf649fc9a5f55asd',
   isMockEnabled: true,
-  authApiUrl: 'http://localhost:5001/auth',
+  authApiUrl: 'http://localhost:5951/Identity',
   notificationApiUrl: 'http://localhost:5001/notification',
   coordinatorApiUrl: 'http://localhost:5001/coordinator',
   studentApiUrl: 'http://localhost:5001/student',
@@ -23,6 +23,7 @@ export const environment = {
   insightsApiUrl: 'http://indanalocal.com/api/insight',
   integrationCallbackUrl: 'http://localhost:4200/w/settings/integration',
   stateMangementSecretKey: '123asdzxc',
+  ApiUrl: 'http://localhost:5951',
 };
 
 /*

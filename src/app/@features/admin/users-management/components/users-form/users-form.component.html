@@ -79,7 +79,7 @@
                     }"
                   >
                     <option value="">Select Status</option>
-                    <option *ngFor="let user of fakeUsers" [value]="user.email">{{user.firstName}} {{user.lastName}}</option>
+                    <option *ngFor="let user of fakeUsers" [value]="user.email">{{user.fullName}}</option>
                   </select>
                   <!--end::Label-->
                   <ng-container

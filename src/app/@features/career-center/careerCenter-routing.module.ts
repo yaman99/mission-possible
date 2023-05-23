@@ -50,7 +50,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: AnnouncementPaths.list,
+        redirectTo: CareerCenterPaths.sgkRequest,
         pathMatch: 'full',
       },
       {

@@ -10,8 +10,7 @@ import { UpdatePhoneModel } from '@features/auth/models/updateUser.model';
 import { UpdateEmailModel } from '@features/auth/models/updateEmail.model';
 import { SetPasswordRequest } from '@features/auth/models/SetPasswordRequest';
 
-const API_AUTH_URL = `${environment.authApiUrl}/Identity`;
-const API_INTEGRATION_URL = `${environment.integrationApiUrl}`;
+const API_AUTH_URL = `${environment.ApiUrl}/Identity`;
 
 @Injectable({
   providedIn: 'root',
@@ -52,7 +51,7 @@ export class AuthHTTPService {
     return this.http.post<any>(`${API_AUTH_URL}/UpdateEmail`, model);
   }
   setupQuickAccount(authCode: string): Observable<any> {
-    return this.http.post<any>(`${API_INTEGRATION_URL}/SetupSallaIntegrationForNewUsers/${authCode}`, null);
+    return this.http.post<any>(`/SetupSallaIntegrationForNewUsers/${authCode}`, null);
   }
   setPassword(model: SetPasswordRequest): Observable<any> {
     return this.http.post<any>(`${API_AUTH_URL}/SetPasswrod/`, model);

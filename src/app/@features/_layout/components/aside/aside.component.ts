@@ -20,6 +20,9 @@ export class AsideComponent implements OnInit, OnDestroy {
   @Select(AuthBaseState.isPromoter) isPromoter$: Observable<boolean>;
   @Select(AuthBaseState.isAdvertiser) isAdvertiser$: Observable<boolean>;
   @Select(AuthBaseState.isAdmin) isAdmin$: Observable<boolean>;
+  @Select(AuthBaseState.isStudent) isStudent$: Observable<boolean>;
+  @Select(AuthBaseState.isCarrerCenter) isCarrerCenter$: Observable<boolean>;
+  @Select(AuthBaseState.isCoordinator) isCoordinator$: Observable<boolean>;
   @ViewChild('ktAsideScroll', { static: true }) ktAsideScroll: ElementRef;
   private unsubscribe: Subscription[] = [];
 
