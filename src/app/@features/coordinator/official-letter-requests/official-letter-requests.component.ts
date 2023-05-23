@@ -31,7 +31,7 @@ export class OfficialLetterRequestsComponent implements OnInit {
     this.getofficialLetterRequests()
 
   }
-  updateStatus(status: string, id: number, url: string) {
+  updateStatus(status: string, id: string, url: string) {
     let model: UpdateOfficialLetterStatusRequest = {
       id: id,
       status: status,

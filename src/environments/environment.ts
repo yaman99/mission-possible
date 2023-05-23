@@ -10,6 +10,7 @@ export const environment = {
   authApiUrl: 'http://localhost:5001/auth',
   notificationApiUrl: 'http://localhost:5001/notification',
   coordinatorApiUrl: 'http://localhost:5001/coordinator',
+  studentApiUrl: 'http://localhost:5001/student',
   workspaceApiUrl: 'http://indanalocal.com/api/workspace',
   itemApiUrl: 'http://indanalocal.com/api/item',
   campaignApiUrl: 'http://indanalocal.com/api/campaign',

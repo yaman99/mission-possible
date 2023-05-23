@@ -1,5 +1,5 @@
 export class UpdateOfficialLetterStatusRequest{
-  id : number;
+  id : string;
   status : string;
   url :string;
 }

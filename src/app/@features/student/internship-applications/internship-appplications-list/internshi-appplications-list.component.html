@@ -70,7 +70,6 @@
       <a
         type="button"
         [routerLink]="paths.addApplication"
-
         class="btn btn-sm fw-bold btn-primary"
         data-bs-toggle="modal"
         data-bs-target="#kt_modal_new_target"
@@ -160,33 +159,36 @@
                 Status
               </th>
               <th
-                class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px"
+                class="min-w-125px sorting"
+                rowspan="1"
+                colspan="1"
+                style="width: 224.922px"
                 rowspan="1"
                 colspan="1"
               >
                 SGK
               </th>
+              <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody class="fw-semibold text-gray-600">
-            <tr >
+            <tr>
               <td>
                 <div class="form-check form-check-sm form-check-custom form-check-solid">
                   <input class="form-check-input" type="checkbox" value="1" />
                 </div>
               </td>
+              <td>1</td>
               <td>
-
+                <a href="">link </a>
               </td>
+              <td>trnlink</td>
+              <td>pending</td>
+              <td>sgk pending</td>
               <td>
-                <a href="">
-
-                </a>
-              </td>
-              <td></td>
-              <td></td>
-              <td class="text-end">
-                <!-- <div ngbDropdown container="body">
+                <div ngbDropdown container="body">
                   <button
                     type="button"
                     class="btn btn-sm btn-light btn-active-light-primary"
@@ -200,13 +202,13 @@
                     ngbDropdownMenu
                   >
                     <div class="menu-item px-3">
-                      <a class="menu-link px-3"> Approve </a>
+                      <a class="menu-link px-3" > Edit </a>
                     </div>
                     <div class="menu-item px-3">
-                      <a class="menu-link px-3"> Reject </a>
+                      <a class="menu-link px-3"> Delete </a>
                     </div>
                   </div>
-                </div> -->
+                </div>
               </td>
             </tr>
             <!-- <tr *ngFor="let user of this.users">
