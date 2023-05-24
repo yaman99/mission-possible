@@ -9,6 +9,10 @@ export namespace UsersManagementStateActions {
     static readonly type = '[UsersManagement] Get All Career Center Users';
     constructor() {}
   }
+  export class GetAssignedUsers {
+    static readonly type = '[UsersManagement] Get All assigned Users ';
+    constructor() {}
+  }
   export class AssignNewUser {
     static readonly type = '[UsersManagement] adding new user';
     constructor(public payload: AssignNewUserRequest) {}

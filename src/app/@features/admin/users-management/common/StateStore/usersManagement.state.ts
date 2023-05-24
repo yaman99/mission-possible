@@ -48,6 +48,22 @@ export class UsersManagementState {
     );
   }
 
+  @Action(UsersManagementStateActions.GetAssignedUsers)
+  onGetAssignedUsers(ctx: StateContext<UsersManagementStateModel>) {
+    return this.usersManagementHttp.getAssignedUsers().pipe(
+      tap({
+        next: (res) => {
+          ctx.patchState({
+            users: res.data,
+          });
+        },
+        error: () => {
+          console.log(1231243);
+        },
+      })
+    );
+  }
+
   @Action(UsersManagementStateActions.AssignNewUser)
   onAssingNewUser(
     ctx: StateContext<UsersManagementStateModel>,

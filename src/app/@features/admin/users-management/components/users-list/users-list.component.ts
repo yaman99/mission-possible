@@ -34,7 +34,7 @@ export class UsersListComponent implements OnInit {
   constructor(private stateBus: IBus, private userServ: UsersManagementHttpService) {}
 
   ngOnInit(): void {
-    this.stateBus.excuteAction(new UsersManagementStateActions.GetObsAllCareerCenter());
+    this.stateBus.excuteAction(new UsersManagementStateActions.GetAssignedUsers());
   }
 
   deleteUser(id: string) {
