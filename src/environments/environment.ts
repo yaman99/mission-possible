@@ -11,6 +11,7 @@ export const environment = {
   notificationApiUrl: 'http://localhost:5001/notification',
   coordinatorApiUrl: 'http://localhost:5001/coordinator',
   studentApiUrl: 'http://localhost:5001/student',
+  careerCenterApiUrl: 'http://localhost:5001/careerCenter',
   workspaceApiUrl: 'http://indanalocal.com/api/workspace',
   itemApiUrl: 'http://indanalocal.com/api/item',
   campaignApiUrl: 'http://indanalocal.com/api/campaign',
