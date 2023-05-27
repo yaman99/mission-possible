@@ -4,7 +4,7 @@
       <h1
         class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0"
       >
-      SGK Requests Management
+        SGK Requests Management
       </h1>
     </div>
   </div>
@@ -12,7 +12,7 @@
 <div class="card">
   <div class="card-header border-0 pt-6">
     <div class="card-title">
-      <h2>Official Letter Requests Management</h2>
+      <h2>SGK Requests Management</h2>
     </div>
   </div>
   <div class="card-body pt-0">
@@ -34,6 +34,9 @@
               <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 171.719px">
                 #ID
               </th>
+              <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 171.719px">
+                Transcript
+              </th>
               <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
                 Company Name
               </th>
@@ -43,15 +46,13 @@
               <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
                 Status
               </th>
-              <th
-              class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px"
-              >
+              <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
                 Actions
               </th>
             </tr>
           </thead>
           <tbody class="fw-semibold text-gray-600">
-            <tr *ngFor="let student of fakeStudent">
+            <tr *ngFor="let student of sgkRequests">
               <td>
                 <div class="form-check form-check-sm form-check-custom form-check-solid">
                   <input class="form-check-input" type="checkbox" value="1" />
@@ -62,12 +63,15 @@
               </td>
               <td>
                 <a href="">
-                  {{ student.companyName }}
+                  {{ student.transcriptUrl }}
                 </a>
+              </td>
+              <td>
+                {{ student.companyName }}
               </td>
               <td>{{ student.internshipType }}</td>
               <td>{{ student.status }}</td>
-              <td >
+              <td>
                 <div ngbDropdown container="body">
                   <button
                     type="button"
@@ -105,4 +109,3 @@
     </div>
   </div>
 </div>
-
