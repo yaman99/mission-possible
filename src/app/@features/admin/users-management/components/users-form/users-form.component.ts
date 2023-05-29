@@ -51,8 +51,14 @@ export class UsersFormComponent implements OnInit {
     },
     {
       id: '4',
+      fullName: 'Zeyad',
+      email: 'scripter.efendi@gmail.com',
+      userType: this.userType.coordinator,
+    },
+    {
+      id: '5',
       fullName: 'Mohammed DELE',
-      email: 'info@indana.io',
+      email: 'rakolee1999sawan@gmail.com',
       userType: this.userType.careerCenter,
     },
     {
