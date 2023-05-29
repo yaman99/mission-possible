@@ -61,6 +61,12 @@ export class UsersFormComponent implements OnInit {
       email: 'muhammad_dele@icloud.com',
       userType: this.userType.careerCenter,
     },
+    {
+      id: '6',
+      fullName: 'Yehya coordinator',
+      email: 'yehyayounes97@gmail.com',
+      userType: this.userType.coordinator,
+    },
 
   ];
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NoticeService } from '@core/notification/notice.service';
 import { StudentPaths } from '@features/student/_commonPaths/studentPaths.constants';
 import { InternshipApplicationModel } from '@features/student/models/internshipApplicationModel';
 import { DeleteInternshipApplicationRequest } from '@features/student/models/requests/deleteInternshipApplicationRequest';
@@ -16,7 +17,7 @@ export class InternshiAppplicationsListComponent implements OnInit {
   };
   internshipApplicationRequests: InternshipApplicationModel[];
 
-  constructor(private stuService: StudentHttpService) {}
+  constructor(private stuService: StudentHttpService, private alertMessage: NoticeService) { }
   ngOnInit() {
     this.getAllAplicationFormRequests();
   }
@@ -46,17 +47,21 @@ export class InternshiAppplicationsListComponent implements OnInit {
     });
   }
 
-  deleteInternshipApplicationRequest(id: string){
-    let model: DeleteInternshipApplicationRequest = {
-      id: id,
-    };
-    this.stuService.deleteInternshipApplicationRequest(model).subscribe({
-      next: () => {
-        console.log('application is deleted');
-      },
-      error: (error: any) => {
-        console.log(error);
-      },
+  deleteInternshipApplicationRequest(id: string) {
+    this.alertMessage.askAlert("Are you sure to delete this request").then(res => {
+      if (res) {
+        let model: DeleteInternshipApplicationRequest = {
+          id: id,
+        };
+        this.stuService.deleteInternshipApplicationRequest(model).subscribe({
+          next: () => {
+            console.log('application is deleted');
+          },
+          error: (error: any) => {
+            console.log(error);
+          },
+        });
+      }
     });
   }
 }
