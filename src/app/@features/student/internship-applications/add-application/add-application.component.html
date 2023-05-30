@@ -102,10 +102,113 @@
           </div>
           <!--end::Header-->
 
-          <div class="mb-4 fa-pull-right">
+          <!-- <div class="mb-4 fa-pull-right">
             <a href="/internships/create" class="text-white fw-bold" class="btn btn-primary">
               <i class="bi bi-upload"></i>Upload the application form
             </a>
+          </div> -->
+          <div class="row">
+            <div class="col-lg">
+              <div class="card-toolbar">
+                <!--begin::Toolbar-->
+                <div class="d-flex justify-content-end" data-kt-filemanager-table-toolbar="base">
+                  <!--begin::Add customer-->
+                  <button
+                    type="button"
+                    class="btn btn-flex btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#kt_modal_upload"
+                    (click)="toggleToolbar()"
+                  >
+                    <i class="fa fa-upload"
+                      ><span class="path1"></span><span class="path2"></span
+                    ></i>
+                    Upload The Application Form
+                  </button>
+                  <!--end::Add customer-->
+                </div>
+                <!--end::Toolbar-->
+
+                <!--begin::Group actions-->
+
+                <div class="modal-dialog modal-dialog-centered mw-650px">
+                  <!--begin::Modal content-->
+                  <div class="modal-content">
+                    <!--begin::Form-->
+                    <form class="form" action="none" id="kt_modal_upload_form" *ngIf="showToolbar">
+                      <!--begin::Modal header-->
+                      <div class="modal-header">
+                        <!--begin::Modal title-->
+                        <h2 class="fw-bold">Upload Transcript</h2>
+                        <!--end::Modal title-->
+
+                        <!--begin::Close-->
+                        <div
+                          class="btn btn-icon btn-sm btn-active-icon-primary"
+                          data-bs-dismiss="modal"
+                        >
+                          <i class="ki-duotone ki-cross fs-1"
+                            ><span class="path1"></span><span class="path2"></span
+                          ></i>
+                        </div>
+                        <!--end::Close-->
+                      </div>
+                      <!--end::Modal header-->
+
+                      <!--begin::Modal body-->
+                      <div class="modal-body pt-10 pb-15 px-lg-17">
+                        <!--begin::Input group-->
+                        <div class="form-group">
+                          <!--begin::Dropzone-->
+                          <div class="dropzone dropzone-queue mb-2" id="kt_modal_upload_dropzone">
+                            <!--begin::Controls-->
+                            <div class="dropzone-panel mb-4">
+                              <label for="">attach file</label>
+                              <input
+                                type="file"
+                                class="file-input"
+                                (change)="onFileSelectedApplication($event)"
+                                #fileUpload
+                              />
+
+                              <!-- <div class="file-upload">
+                                {{ fileName || 'No file uploaded yet.' }}
+
+                                <button
+                                  mat-mini-fab
+                                  color="primary"
+                                  class="upload-btn"
+                                  (click)="fileUpload.click()"
+                                >
+                                  <i class="fa fa-upload"
+                                    ><span class="path1"></span><span class="path2"></span
+                                  ></i>
+                                </button>
+                              </div> -->
+                            </div>
+                            <!--end::Controls-->
+
+                            <!--begin::Items-->
+                            <div class="dropzone-items wm-200px"></div>
+                            <!--end::Items-->
+                          </div>
+                          <!--end::Dropzone-->
+
+                          <!--begin::Hint-->
+                          <span class="form-text fs-6 text-muted"
+                            >Max file size is 1MB per file.</span
+                          >
+                          <!--end::Hint-->
+                        </div>
+                        <!--end::Input group-->
+                      </div>
+                      <!--end::Modal body-->
+                    </form>
+                    <!--end::Form-->
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <!--end::Body-->
@@ -152,10 +255,114 @@
           </div>
           <!--end::Header-->
 
-          <div class="mb-4 fa-pull-right">
+          <!-- <div class="mb-4 fa-pull-right">
             <a href="/internships/create" class="text-white fw-bold" class="btn btn-primary">
               <i class="bi bi-upload"></i>Upload Transcript
             </a>
+          </div> -->
+          <div class="row">
+            <div class="col-lg">
+              <div class="card-toolbar">
+                <!--begin::Toolbar-->
+                <div class="d-flex justify-content-end" data-kt-filemanager-table-toolbar="base">
+                  <!--begin::Add customer-->
+                  <button
+                    type="file"
+                    class="btn btn-flex btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#kt_modal_upload"
+                    (click)="toggleToolbarTranscript()"
+                  >
+                    <i class="fa fa-upload"
+                      ><span class="path1"></span><span class="path2"></span
+                    ></i>
+                    Upload Transcript
+                  </button>
+                  <!--end::Add customer-->
+                </div>
+                <!--end::Toolbar-->
+
+                <!--begin::Group actions-->
+
+                <div class="modal-dialog modal-dialog-centered mw-650px">
+                  <!--begin::Modal content-->
+                  <div class="modal-content">
+                    <!--begin::Form-->
+                    <form
+                      class="form"
+                      action="none"
+                      id="kt_modal_upload_form"
+                      *ngIf="showToolbarTranscript"
+                    >
+                      <!--begin::Modal header-->
+                      <div class="modal-header">
+                        <!--begin::Modal title-->
+                        <h2 class="fw-bold">Upload Transcript</h2>
+                        <!--end::Modal title-->
+
+                        <!--begin::Close-->
+                        <div
+                          class="btn btn-icon btn-sm btn-active-icon-primary"
+                          data-bs-dismiss="modal"
+                        >
+                          <i class="ki-duotone ki-cross fs-1"
+                            ><span class="path1"></span><span class="path2"></span
+                          ></i>
+                        </div>
+                        <!--end::Close-->
+                      </div>
+                      <!--end::Modal header-->
+
+                      <!--begin::Modal body-->
+                      <div class="modal-body pt-10 pb-15 px-lg-17">
+                        <!--begin::Input group-->
+                        <div class="form-group">
+                          <!--begin::Dropzone-->
+                          <div class="dropzone dropzone-queue mb-2" id="kt_modal_upload_dropzone">
+                            <!--begin::Controls-->
+                            <div class="dropzone-panel mb-4">
+                              <label for="">attach file</label>
+                              <input type="file" class="file-input" #fileUpload />
+
+                              <!-- <div class="file-upload">
+                                {{ fileName || 'No file uploaded yet.' }}
+
+                                <button
+                                  mat-mini-fab
+                                  color="primary"
+                                  class="upload-btn"
+                                  (click)="fileUpload.click()"
+                                  (change)="onFileSelectedTranscript($event)"
+                                >
+                                  <i class="fa fa-upload"
+                                    ><span class="path1"></span><span class="path2"></span
+                                  ></i>
+                                </button>
+                              </div> -->
+                            </div>
+                            <!--end::Controls-->
+
+                            <!--begin::Items-->
+                            <div class="dropzone-items wm-200px"></div>
+                            <!--end::Items-->
+                          </div>
+                          <!--end::Dropzone-->
+
+                          <!--begin::Hint-->
+                          <span class="form-text fs-6 text-muted"
+                            >Max file size is 1MB per file.</span
+                          >
+                          <!--end::Hint-->
+                        </div>
+                        <!--end::Input group-->
+                      </div>
+                      <!--end::Modal body-->
+                    </form>
+                    <!--end::Form-->
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <!--end::Body-->
