@@ -1,5 +1,5 @@
 import { InternshipApplicationModel } from "../internshipApplicationModel";
 
 export class GetAllInternshipApplicationFormResponse{
-  applicationFormData: InternshipApplicationModel[];
+  data: InternshipApplicationModel[];
 }

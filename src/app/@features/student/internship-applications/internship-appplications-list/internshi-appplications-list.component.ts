@@ -1,10 +1,13 @@
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { NoticeService } from '@core/notification/notice.service';
 import { StudentPaths } from '@features/student/_commonPaths/studentPaths.constants';
-import { InternshipApplicationModel } from '@features/student/models/internshipApplicationModel';
-import { DeleteInternshipApplicationRequest } from '@features/student/models/requests/deleteInternshipApplicationRequest';
-import { UpdateInternshipApplicationRequest } from '@features/student/models/requests/updateInternshipApplicationStatusRequest';
-import { StudentHttpService } from '@features/student/services/student-http.service';
+import { DeleteInternshipApplicationRequest } from '@shared/models/requests/deleteInternshipApplicationRequest';
+import { UpdateInternshipApplicationRequest } from '@shared/models/requests/updateInternshipApplicationStatusRequest';
+import { RequestManagementHttpService } from '@shared/services/request-management.service';
+import { environment } from 'src/environments/environment';
+import { InternshipApplicationModel } from '@shared/models/internshipApplicationModel';
+import { GetAllInternshipApplicationFormResponse } from '@shared/models/responses/getAllInternshipApplicationFormResponse';
 
 @Component({
   selector: 'app-internshi-appplications-list',
@@ -15,40 +18,36 @@ export class InternshiAppplicationsListComponent implements OnInit {
   paths = {
     addApplication: StudentPaths.addApplicationComponents,
   };
-  internshipApplicationRequests: InternshipApplicationModel[];
+  baseUrl = environment.ApiUrl;
+  internshipApplicationRequests = new BehaviorSubject<InternshipApplicationModel[]>([]);
 
-  constructor(private stuService: StudentHttpService, private alertMessage: NoticeService) { }
+  constructor(private stuService: RequestManagementHttpService, private alertMessage: NoticeService) {}
   ngOnInit() {
     this.getAllAplicationFormRequests();
   }
   getAllAplicationFormRequests() {
-    this.stuService.getAllInternshipApplicationRequests().subscribe({
-      next: (data: any) => {
-        this.internshipApplicationRequests = data.applicationFormData;
-      },
-      error: (error: any) => {
-        console.log(error);
-      },
+    this.stuService.getAllStudentRequests("application").subscribe((res:GetAllInternshipApplicationFormResponse) => {
+      this.internshipApplicationRequests.next(res.data);
     });
   }
-  updateInternshipApplicationRequest(id: string, applicationUrl: string, transcriptUrl: string) {
-    let model: UpdateInternshipApplicationRequest = {
-      id: id,
-      applicationUrl: applicationUrl,
-      transcriptUrl: transcriptUrl,
-    };
-    this.stuService.updateInternshipApplicationRequest(model).subscribe({
-      next: () => {
-        console.log('application is updated');
-      },
-      error: (error: any) => {
-        console.log(error);
-      },
-    });
-  }
+  // updateInternshipApplicationRequest(id: string, applicationUrl: string, transcriptUrl: string) {
+  //   let model: UpdateInternshipApplicationRequest = {
+  //     id: id,
+  //     applicationUrl: applicationUrl,
+  //     transcriptUrl: transcriptUrl,
+  //   };
+  //   this.stuService.updateInternshipApplicationRequest(model).subscribe({
+  //     next: () => {
+  //       console.log('application is updated');
+  //     },
+  //     error: (error: any) => {
+  //       console.log(error);
+  //     },
+  //   });
+  // }
 
   deleteInternshipApplicationRequest(id: string) {
-    this.alertMessage.askAlert("Are you sure to delete this request").then(res => {
+    this.alertMessage.askAlert('Are you sure to delete this request' , "Confirm").then((res) => {
       if (res) {
         let model: DeleteInternshipApplicationRequest = {
           id: id,
@@ -56,6 +55,7 @@ export class InternshiAppplicationsListComponent implements OnInit {
         this.stuService.deleteInternshipApplicationRequest(model).subscribe({
           next: () => {
             console.log('application is deleted');
+            this.getAllAplicationFormRequests();
           },
           error: (error: any) => {
             console.log(error);

@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NoticeService } from '@core/notification/notice.service';
+import { StudentPaths } from '@features/student/_commonPaths/studentPaths.constants';
+import { RequestManagementHttpService } from '@shared/services/request-management.service';
 
 
 @Component({
@@ -23,13 +26,19 @@ export class AddComponent implements OnInit {
 
   showToolbar: boolean = false;
 
+  transcriptFile: File;
+  formData = new FormData();
+  internshipType: string;
   get form() {
     return this.usersForm.controls;
   }
 
 
 
-  constructor(private fb: FormBuilder, private router: Router , private http : HttpClient) { }
+  constructor(private fb: FormBuilder,
+     private studentHtppServ: RequestManagementHttpService,
+    private notification: NoticeService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -45,51 +54,42 @@ export class AddComponent implements OnInit {
       this.compulsory1Checked = true;
       this.compulsory2Checked = false;
       this.voluntaryChecked = false;
+      this.internshipType = checkbox;
 
     }
     if (checkbox === 'compulsory2') {
       this.compulsory1Checked = false;
       this.compulsory2Checked = true;
       this.voluntaryChecked = false;
+      this.internshipType = checkbox;
     }
     if (checkbox === 'voluntary') {
       this.compulsory1Checked = false;
       this.compulsory2Checked = false;
       this.voluntaryChecked = true;
+      this.internshipType = checkbox;
     }
   }
-  onFileSelected(event : any) {
-    const file:File = event!.target!.files[0];
-
-
-    if (file) {
-
-        this.fileName = file.name;
-
-        const formData = new FormData();
-
-        formData.append("thumbnail", file);
-
-        const upload$ = this.http.post("/api/thumbnail-upload", formData);
-
-        upload$.subscribe();
-    }
-}
+  onFileSelectedTranscript(event: any) {
+    this.transcriptFile = event.target.files[0];
+  }
   toggleToolbar(){
     this.showToolbar = !this.showToolbar;
   }
   checkifformValid() {
     return this.usersForm.valid;
   }
-  saveChanges() {
-    // console.log(this.form.isActive.value);
-    let model = {
-      companyName: this.form.companyName.value,
 
 
-    };
-
-    console.log(model);
-    this.router.navigate(['/st/official-letter/list']);
+  onSubmit() {
+    this.formData.append('transcript', this.transcriptFile);
+    this.formData.append('internshipType', this.internshipType);
+    this.formData.append('companyName', this.form.companyName.value);
+    this.studentHtppServ.addOfficialRequest(this.formData).subscribe({
+      next: () => {
+        this.notification.successNotice('Your Request Created Successfully');
+        this.router.navigate(StudentPaths.officialLetterComponents);
+      },
+    });
   }
 }

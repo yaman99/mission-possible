@@ -139,7 +139,7 @@
                       <!--begin::Modal header-->
                       <div class="modal-header">
                         <!--begin::Modal title-->
-                        <h2 class="fw-bold">Upload Transcript</h2>
+                        <h2 class="fw-bold">Upload The Application Form</h2>
                         <!--end::Modal title-->
 
                         <!--begin::Close-->
@@ -168,7 +168,6 @@
                                 type="file"
                                 class="file-input"
                                 (change)="onFileSelectedApplication($event)"
-                                #fileUpload
                               />
 
                               <!-- <div class="file-upload">
@@ -322,7 +321,7 @@
                             <!--begin::Controls-->
                             <div class="dropzone-panel mb-4">
                               <label for="">attach file</label>
-                              <input type="file" class="file-input" #fileUpload />
+                              <input type="file" class="file-input" (change)="onFileSelectedTranscript($event)" />
 
                               <!-- <div class="file-upload">
                                 {{ fileName || 'No file uploaded yet.' }}
@@ -441,7 +440,7 @@
               </div>
               <!-- end col 1 -->
               <div class="col-6 d-flex flex-column align-bottom bottom-parent">
-                <div class="btn btn-primary fa-pull-right bottom">Sbumit</div>
+                <div class="btn btn-primary fa-pull-right bottom" (click)="onSubmit()">Sbumit</div>
               </div>
             </div>
           </div>

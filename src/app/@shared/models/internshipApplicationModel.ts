@@ -1,6 +1,6 @@
 export class InternshipApplicationModel{
   id : string;
-  applicationUrl : string;
+  applicationFormUrl : string;
   transcriptUrl: string;
   status : string;
   sgkUrl: string;

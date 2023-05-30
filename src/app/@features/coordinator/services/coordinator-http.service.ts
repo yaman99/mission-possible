@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { UpdateApplicationStatusRequest } from '../models/requests/updateApplicationStatusRequest';
+import { UpdateApplicationStatusRequest } from '../../../@shared/models/requests/updateApplicationStatusRequest';
 import { GetAllApplicationRequestResponse } from '../models/responses/getAllApplicationRequestResponse';
 import { GetAllOfficialLetterRequestResponse } from '../models/responses/getAllOfficialLetterRequestResponse';
 import { UpdateOfficialLetterStatusRequest } from '../models/requests/updateOfficialLetterStatusRequest';
