@@ -183,7 +183,7 @@
               <td>{{i+1}}</td>
               <td>
                 <ng-container *ngIf="request.applicationFormUrl; else appNull;">
-                  <a [href]="baseUrl + request.applicationFormUrl">Download Application Form </a>
+                  <a [href]="baseUrl + request.applicationFormUrl">Application Form </a>
                 </ng-container>
                 <ng-template #appNull>
                   <p>Not Uploaded</p>
@@ -191,12 +191,13 @@
               </td>
               <td>
                 <ng-container *ngIf="request.transcriptUrl; else transNull;">
-                  <a [href]="baseUrl + request.transcriptUrl">Download Transcript Form </a>
+                  <a [href]="baseUrl + request.transcriptUrl">Transcript Form </a>
                 </ng-container>
                 <ng-template #transNull>
                   <p>Not Uploaded</p>
                 </ng-template>
               </td>
+              <td>{{request.status}}</td>
               <td>
                 <ng-container *ngIf="request.sgkUrl; else sgkNull;">
                   <a [href]="baseUrl + request.sgkUrl">Download Sgk Form </a>
@@ -205,7 +206,7 @@
                   <p>Not Uploaded</p>
                 </ng-template>
               </td>
-              <td>{{request.status}}</td>
+
               <td>
                 <div ngbDropdown container="body">
                   <button
