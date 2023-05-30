@@ -1,53 +1,61 @@
+import { BehaviorSubject } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { UpdateApplicationStatusRequest } from '../models/requests/updateApplicationStatusRequest';
+import { UpdateApplicationStatusRequest } from '../../../@shared/models/requests/updateApplicationStatusRequest';
 import { CoordinatorHttpService } from '../services/coordinator-http.service';
 import { ApplicationRequestModel } from '../models/applicationRequestModel';
+import { RequestManagementHttpService } from '@shared/services/request-management.service';
+import { GetAllInternshipApplicationFormResponse } from '@shared/models/responses/getAllInternshipApplicationFormResponse';
+import { InternshipApplicationModel } from '@shared/models/internshipApplicationModel';
+import { environment } from 'src/environments/environment';
+import { NoticeService } from '@core/notification/notice.service';
 
 @Component({
   selector: 'app-request-management',
   templateUrl: './request-management.component.html',
-  styleUrls: ['./request-management.component.scss']
+  styleUrls: ['./request-management.component.scss'],
 })
 export class RequestManagementComponent implements OnInit {
-  requestsData:ApplicationRequestModel[];
-
-  fakeStudent = [{
-    id: '1',
-    applicationForm: 'www.uskudar.edu.tr',
-    transcriptStatus: 'not uploaded',
-    status: 'pending',
-  },
-  {
-    id: '2',
-    applicationForm: 'www.uskudar.edu.tr',
-    transcriptStatus: 'not uploaded',
-    status: 'pending',
-  }
+  requestsData = new BehaviorSubject<InternshipApplicationModel[]>([]);
+  baseUrl = environment.ApiUrl;
+  fakeStudent = [
+    {
+      id: '1',
+      applicationForm: 'www.uskudar.edu.tr',
+      transcriptStatus: 'not uploaded',
+      status: 'pending',
+    },
+    {
+      id: '2',
+      applicationForm: 'www.uskudar.edu.tr',
+      transcriptStatus: 'not uploaded',
+      status: 'pending',
+    },
   ];
 
-  constructor(private coHttp: CoordinatorHttpService) { }
+  constructor(private requestHttp: RequestManagementHttpService , private notification:NoticeService) {}
   ngOnInit() {
-    this.getApplicationRequests()
+    this.getApplicationRequests();
   }
-
 
   updateStatus(status: string, id: string) {
     let model: UpdateApplicationStatusRequest = {
       id: id,
-      status: status
-    }
-    this.coHttp.updateApplicationRequestStatus(model).subscribe({
-      next: () => { console.log('status and id updated') }, //we should update the status according to our database
-      error: (err) => console.log(err)
+      status: status,
+    };
+    this.requestHttp.updateRequestStatus(model).subscribe({
+      next: () => {
+        this.notification.successNotice("Status Updated");
+        this.getApplicationRequests();
+      },
+      error: (err) => console.log(err),
     });
   }
-  getApplicationRequests(){
-    this.coHttp.getAllApplicationRequests().subscribe({
-      next: (response) => {
-        this.requestsData = response.data
+  getApplicationRequests() {
+    this.requestHttp.getAllRequests('application').subscribe({
+      next: (response: GetAllInternshipApplicationFormResponse) => {
+        this.requestsData.next(response.data);
       },
-      error: (err) => console.log(err)
-    })
+      error: (err) => console.log(err),
+    });
   }
-
 }

@@ -35,6 +35,12 @@
                 #ID
               </th>
               <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
+                Transcript
+              </th>
+              <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
+                official Letter
+              </th>
+              <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
                 Company Name
               </th>
               <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
@@ -49,22 +55,37 @@
             </tr>
           </thead>
           <tbody class="fw-semibold text-gray-600">
-            <tr *ngFor="let student of fakeStudent">
+            <tr *ngFor="let request of requestsData | async; let i = index">
               <td>
                 <div class="form-check form-check-sm form-check-custom form-check-solid">
                   <input class="form-check-input" type="checkbox" value="1" />
                 </div>
               </td>
               <td>
-                {{ student.id }}
+                {{ i + 1 }}
               </td>
               <td>
-                <a href="">
-                  {{ student.companyName }}
-                </a>
+                <ng-container *ngIf="request.transcriptUrl; else transNull">
+                  <a [href]="baseUrl + request.transcriptUrl">Download Transcript Form </a>
+                </ng-container>
+                <ng-template #transNull>
+                  <p>Not Uploaded</p>
+                </ng-template>
               </td>
-              <td>{{ student.internshipType }}</td>
-              <td>{{ student.status }}</td>
+              <td>
+                <ng-container *ngIf="request.officialLetterUrl; else transNull">
+                  <a [href]="baseUrl + request.officialLetterUrl">Download official Letter</a>
+                </ng-container>
+                <ng-template #transNull>
+                  <p>Not Uploaded</p>
+                </ng-template>
+              </td>
+              <td>
+                {{ request.companyName }}
+              </td>
+
+              <td>{{ request.internshipType }}</td>
+              <td>{{ request.status }}</td>
               <td>
                 <div ngbDropdown container="body">
                   <button
@@ -79,19 +100,23 @@
                     data-kt-menu="true"
                     ngbDropdownMenu
                   >
-                    <div class="menu-item px-3">
+                    <div class="menu-item px-3" *ngIf="!(request.status === 'approved')">
                       <input
                         class="menu-link px-3"
                         style="display: none"
                         type="file"
-                        (change)="onFileSelected($event)"
+                        (change)="onFileSelected($event, request.id)"
                         #fileUpload
                       />
 
-                      <a class="menu-link px-3" (click)="fileUpload.click()"> Upload File </a>
+                      <a class="menu-link px-3" (click)="fileUpload.click()">
+                        Upload Official Letter
+                      </a>
                     </div>
-                    <div class="menu-item px-3">
-                      <a class="menu-link px-3" (click)="updateStatus('rejected',student.id,'dkcm')"> Reject </a>
+                    <div class="menu-item px-3" *ngIf="!(request.status === 'rejected')">
+                      <a class="menu-link px-3" (click)="updateStatus('rejected', request.id)">
+                        Reject
+                      </a>
                     </div>
                   </div>
                 </div>

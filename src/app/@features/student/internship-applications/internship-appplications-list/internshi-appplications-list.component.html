@@ -174,19 +174,38 @@
             </tr>
           </thead>
           <tbody class="fw-semibold text-gray-600">
-            <tr>
+            <tr *ngFor="let request of (this.internshipApplicationRequests | async) let i = index">
               <td>
                 <div class="form-check form-check-sm form-check-custom form-check-solid">
                   <input class="form-check-input" type="checkbox" value="1" />
                 </div>
               </td>
-              <td>1</td>
+              <td>{{i+1}}</td>
               <td>
-                <a href="">link </a>
+                <ng-container *ngIf="request.applicationFormUrl; else appNull;">
+                  <a [href]="baseUrl + request.applicationFormUrl">Download Application Form </a>
+                </ng-container>
+                <ng-template #appNull>
+                  <p>Not Uploaded</p>
+                </ng-template>
               </td>
-              <td>trnlink</td>
-              <td>pending</td>
-              <td>sgk pending</td>
+              <td>
+                <ng-container *ngIf="request.transcriptUrl; else transNull;">
+                  <a [href]="baseUrl + request.transcriptUrl">Download Transcript Form </a>
+                </ng-container>
+                <ng-template #transNull>
+                  <p>Not Uploaded</p>
+                </ng-template>
+              </td>
+              <td>
+                <ng-container *ngIf="request.sgkUrl; else sgkNull;">
+                  <a [href]="baseUrl + request.sgkUrl">Download Sgk Form </a>
+                </ng-container>
+                <ng-template #sgkNull>
+                  <p>Not Uploaded</p>
+                </ng-template>
+              </td>
+              <td>{{request.status}}</td>
               <td>
                 <div ngbDropdown container="body">
                   <button
@@ -205,7 +224,7 @@
                       <a class="menu-link px-3" > Edit </a>
                     </div>
                     <div class="menu-item px-3">
-                      <a class="menu-link px-3" (click)="deleteInternshipApplicationRequest('1')"> Delete </a>
+                      <a class="menu-link px-3" (click)="deleteInternshipApplicationRequest(request.id)"> Delete </a>
                     </div>
                   </div>
                 </div>

@@ -170,7 +170,7 @@
                                 <input
                                   type="file"
                                   class="file-input"
-                                  (change)="onFileSelected($event)"
+                                  (change)="onFileSelectedTranscript($event)"
                                   #fileUpload
                                 />
 
@@ -237,7 +237,7 @@
             </a> -->
             <button
               type="submit"
-              (click)="saveChanges()"
+              (click)="onSubmit()"
               class="btn btn-primary"
               id="kt_account_profile_details_submit"
               [disabled]="!checkifformValid()"

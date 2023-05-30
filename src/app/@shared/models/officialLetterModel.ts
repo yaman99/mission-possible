@@ -3,5 +3,8 @@ export class officialLetterModel {
   id: string;
   creationDate: Date;
   status: string;
-  company: string;
+  companyName: string;
+  internshipType: string;
+  transcriptUrl: string;
+  officialLetterUrl: string;
 }

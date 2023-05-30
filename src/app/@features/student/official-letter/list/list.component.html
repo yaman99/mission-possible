@@ -140,6 +140,9 @@
             <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 171.719px">
               #ID
             </th>
+            <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 171.719px">
+              Official Letter
+            </th>
             <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
               Creation Date
             </th>
@@ -157,7 +160,7 @@
           </tr>
           </thead>
           <tbody class="fw-semibold text-gray-600">
-          <tr> <!--  *ngFor="let student of fakeStudent" -->
+          <tr *ngFor="let request of officialLetterRequests | async"> <!--  *ngFor="let student of fakeStudent" -->
             <td>
               <div class="form-check form-check-sm form-check-custom form-check-solid">
                 <input class="form-check-input" type="checkbox" value="1" />
@@ -166,13 +169,21 @@
             <td>1
             </td>
             <td>
+              <ng-container *ngIf="request.officialLetterUrl; else transNull;">
+                <a [href]="baseUrl + request.officialLetterUrl">Download Official Letter </a>
+              </ng-container>
+              <ng-template #transNull>
+                <p>Not Uploaded</p>
+              </ng-template>
+            </td>
+            <td>
               {{currentDate | date:'yyyy-MM-dd'}}
             </td>
             <td>
-              Pending
+              {{request.status}}
             </td>
             <td>
-              Getir
+              {{request.companyName}}
             </td>
           </tr>
           <!-- <tr *ngFor="let user of this.users">
