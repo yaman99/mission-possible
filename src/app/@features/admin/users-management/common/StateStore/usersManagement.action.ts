@@ -17,4 +17,8 @@ export namespace UsersManagementStateActions {
     static readonly type = '[UsersManagement] adding new user';
     constructor(public payload: AssignNewUserRequest) {}
   }
+  export class DeleteUser {
+    static readonly type = '[UsersManagement] delete user';
+    constructor(public userId: string) {}
+  }
 }

@@ -25,4 +25,7 @@ export class UsersManagementHttpService {
     return this.http.post<any>(`${AUTH_ENDPOINT}/assign-new-user/`, model);
   }
 
+  deleteUser(userId: string): Observable<any> {
+    return this.http.post<any>(`${AUTH_ENDPOINT}/delete-user/`, { userId });
+  }
 }

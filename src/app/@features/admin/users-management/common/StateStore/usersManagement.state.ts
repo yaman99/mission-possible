@@ -78,4 +78,24 @@ export class UsersManagementState {
       })
     );
   }
+
+  @Action(UsersManagementStateActions.DeleteUser)
+  onDeleteUser(
+    ctx: StateContext<UsersManagementStateModel>,
+    { userId }: UsersManagementStateActions.DeleteUser
+  ) {
+    return this.usersManagementHttp.deleteUser(userId).pipe(
+      tap({
+        next: () => {
+          ctx.setState(
+            patch<UsersManagementStateModel>({
+              users: removeItem((x) => x?.id === userId),
+            })
+          );
+          this.notify.successNotice('User deleted');
+          ctx.dispatch(new Navigate(UsersManagementPaths.listComponents));
+        },
+      })
+    );
+  }
 }

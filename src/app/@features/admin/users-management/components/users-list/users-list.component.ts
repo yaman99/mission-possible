@@ -38,7 +38,7 @@ export class UsersListComponent implements OnInit {
   }
 
   deleteUser(id: string) {
-    // this.stateBus.excuteAction(new UsersManagementStateActions.DeleteUser(id));
+    this.stateBus.excuteAction(new UsersManagementStateActions.DeleteUser(id));
   }
 
   SelectUserType(userType: string) {
