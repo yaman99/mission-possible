@@ -68,12 +68,13 @@ export class NoticeService {
     const messages = this.prepareValidationErrorMessage(msg);
     this.errorNotice(messages, msg[0]);
   }
-  async askAlert(msg: string) {
-    const messages = this.translation.getTranslateMany([
-      'ALERT.ASK.TITLE',
-      msg,
-      'ALERT.ASK.CONFIRM',
-    ]);
+  async askAlert(msg: string,title : string) {
+    // const messages = this.translation.getTranslateMany([
+    //   'ALERT.ASK.TITLE',
+    //   msg,
+    //   'ALERT.ASK.CONFIRM',
+    // ]);
+    const messages=[title,msg,"Confirm"]
 
     const result = await Swal.fire({
       title: messages[0],
