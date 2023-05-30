@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NoticeService } from '@core/notification/notice.service';
+import { OfficialLetterPaths } from '@features/student/_commonPaths/officialLetterPaths.constants';
 import { StudentPaths } from '@features/student/_commonPaths/studentPaths.constants';
 import { RequestManagementHttpService } from '@shared/services/request-management.service';
 
@@ -88,7 +89,7 @@ export class AddComponent implements OnInit {
     this.studentHtppServ.addOfficialRequest(this.formData).subscribe({
       next: () => {
         this.notification.successNotice('Your Request Created Successfully');
-        this.router.navigate(StudentPaths.officialLetterComponents);
+        this.router.navigate(OfficialLetterPaths.listComponents);
       },
     });
   }
