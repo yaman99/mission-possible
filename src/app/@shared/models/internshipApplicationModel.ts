@@ -4,5 +4,6 @@ export class InternshipApplicationModel{
   transcriptUrl: string;
   status : string;
   sgkUrl: string;
-
+  internshipType: string;
+  companyName: string;
 }

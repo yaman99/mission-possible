@@ -37,9 +37,9 @@
               <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 171.719px">
                 Transcript
               </th>
-              <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
+              <!-- <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
                 Company Name
-              </th>
+              </th> -->
               <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
                 Internship Type
               </th>
@@ -52,25 +52,28 @@
             </tr>
           </thead>
           <tbody class="fw-semibold text-gray-600">
-            <tr *ngFor="let student of sgkRequests">
+            <tr *ngFor="let request of requestsData| async let i = index">
               <td>
                 <div class="form-check form-check-sm form-check-custom form-check-solid">
                   <input class="form-check-input" type="checkbox" value="1" />
                 </div>
               </td>
               <td>
-                {{ student.id }}
+                {{ i + 1 }}
               </td>
               <td>
-                <a href="">
-                  {{ student.transcriptUrl }}
-                </a>
+                <ng-container *ngIf="request.transcriptUrl; else transNull;">
+                  <a [href]="baseUrl + request.transcriptUrl">Download Transcript Form </a>
+                </ng-container>
+                <ng-template #transNull>
+                  <p>Not Uploaded</p>
+                </ng-template>
               </td>
-              <td>
-                {{ student.companyName }}
-              </td>
-              <td>{{ student.internshipType }}</td>
-              <td>{{ student.status }}</td>
+              <!-- <td>
+                {{ request.companyName }}
+              </td> -->
+              <td>{{ request.internshipType }}</td>
+              <td>{{ request.status }}</td>
               <td>
                 <div ngbDropdown container="body">
                   <button

@@ -1,17 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { CareerCenterHttpService } from '../services/career-center-http.service';
 import { SgkRequestModel } from '../models/sgkRequestModel';
+import { RequestManagementHttpService } from '@shared/services/request-management.service';
+import { BehaviorSubject } from 'rxjs';
+import { InternshipApplicationModel } from '@shared/models/internshipApplicationModel';
+import { GetAllInternshipApplicationFormResponse } from '@shared/models/responses/getAllInternshipApplicationFormResponse';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-sgk-requests',
   templateUrl: './sgk-requests.component.html',
   styleUrls: ['./sgk-requests.component.scss'],
 })
-export class SgkRequestsComponent implements OnInit{
-  sgkRequests : SgkRequestModel[];
-  constructor(private crServ : CareerCenterHttpService) {}
+export class SgkRequestsComponent implements OnInit {
+  requestsData = new BehaviorSubject<InternshipApplicationModel[]>([]);
+  baseUrl = environment.ApiUrl;
+  constructor(private requestManagementServ: RequestManagementHttpService) {}
   ngOnInit() {
-    this.getAllSgkRequest()
+    this.getAllSgkRequest();
   }
 
   fakeStudent = [
@@ -28,15 +34,14 @@ export class SgkRequestsComponent implements OnInit{
       status: 'pending',
     },
   ];
-  getAllSgkRequest(){
-    this.crServ.getAllInternshipApplicationRequests().subscribe({
-      next: (data ) => {
-        this.sgkRequests = data.sgkRequestData;
+  getAllSgkRequest() {
+    this.requestManagementServ.getAllRequests('application' , 'approved').subscribe({
+      next: (res: GetAllInternshipApplicationFormResponse) => {
+        this.requestsData.next(res.data);
       },
       error: (err) => {
         console.log(err);
-      }
-
-    })
+      },
+    });
   }
 }
