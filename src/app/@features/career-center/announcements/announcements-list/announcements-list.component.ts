@@ -47,7 +47,7 @@ export class AnnouncementsListComponent implements OnInit {
     };
     this.crServ.deleteAnnouncement(model).subscribe({
       next: () => {
-        this.notification.successNotice('Official Letter Uploaded Successfully');
+        this.notification.successNotice('Announcement is deleted Successfully');
         this.getAllAnnouncement();
       },
       error: (error: any) => {

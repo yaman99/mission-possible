@@ -43,7 +43,7 @@ export class AddAnnouncementComponent implements OnInit {
     };
     this.annServ.addNewAnnouncement(model).subscribe({
       next: () => {
-        this.router.navigate([AnnouncementPaths.listComponents]);
+        this.router.navigate(AnnouncementPaths.listComponents);
       },
     });
   }

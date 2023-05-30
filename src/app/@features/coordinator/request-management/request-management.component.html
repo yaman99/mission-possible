@@ -40,6 +40,9 @@
                 Status
               </th>
               <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
+                SGK
+              </th>
+              <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
                 Actions
               </th>
             </tr>
@@ -70,6 +73,7 @@
                   <p>Not Uploaded</p>
                 </ng-template>
               </td>
+              <td>{{request.status}}</td>
               <td>
                 <ng-container *ngIf="request.sgkUrl; else sgkNull;">
                   <a [href]="baseUrl + request.sgkUrl">Download Sgk Form </a>
@@ -78,7 +82,7 @@
                   <p>Not Uploaded</p>
                 </ng-template>
               </td>
-              <td>{{request.status}}</td>
+
               <td>
                 <div ngbDropdown container="body">
                   <button
