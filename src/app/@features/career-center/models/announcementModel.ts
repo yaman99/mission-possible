@@ -1,7 +1,8 @@
 export class AnnouncementModel {
   title: string;
   creationDate: Date;
-  status: string;
+  content: string;
+  url: string;
   id : string;
 
 }
