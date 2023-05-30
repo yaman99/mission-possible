@@ -52,7 +52,7 @@ export class InternshiAppplicationsListComponent implements OnInit {
         let model: DeleteInternshipApplicationRequest = {
           id: id,
         };
-        this.stuService.deleteInternshipApplicationRequest(model).subscribe({
+        this.stuService.deleteRequest(model).subscribe({
           next: () => {
             console.log('application is deleted');
             this.getAllAplicationFormRequests();

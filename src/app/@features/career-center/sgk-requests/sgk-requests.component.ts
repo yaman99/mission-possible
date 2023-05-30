@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 import { InternshipApplicationModel } from '@shared/models/internshipApplicationModel';
 import { GetAllInternshipApplicationFormResponse } from '@shared/models/responses/getAllInternshipApplicationFormResponse';
 import { environment } from 'src/environments/environment';
+import { NoticeService } from '@core/notification/notice.service';
 
 @Component({
   selector: 'app-sgk-requests',
@@ -15,7 +16,9 @@ import { environment } from 'src/environments/environment';
 export class SgkRequestsComponent implements OnInit {
   requestsData = new BehaviorSubject<InternshipApplicationModel[]>([]);
   baseUrl = environment.ApiUrl;
-  constructor(private requestManagementServ: RequestManagementHttpService) {}
+  sgkFile:File
+  formData = new FormData();
+  constructor(private requestManagementServ: RequestManagementHttpService , private notification: NoticeService) {}
   ngOnInit() {
     this.getAllSgkRequest();
   }
@@ -41,6 +44,18 @@ export class SgkRequestsComponent implements OnInit {
       },
       error: (err) => {
         console.log(err);
+      },
+    });
+  }
+  onFileSelected(e: any, requestId: string) {
+    this.sgkFile = e.target.files[0];
+    this.formData.append('id', requestId);
+    this.formData.append('file', this.sgkFile);
+    this.formData.append('type', 'sgk');
+    this.requestManagementServ.uploadOfficialLetter(this.formData).subscribe({
+      next: () => {
+        this.notification.successNotice('Official Letter Uploaded Successfully');
+        this.getAllSgkRequest();
       },
     });
   }

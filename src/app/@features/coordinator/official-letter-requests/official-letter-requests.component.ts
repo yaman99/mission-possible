@@ -52,7 +52,8 @@ export class OfficialLetterRequestsComponent implements OnInit {
   onFileSelected(e: any, requestId: string) {
     this.officialDoc = e.target.files[0];
     this.formData.append('id', requestId);
-    this.formData.append('officialLetter', this.officialDoc);
+    this.formData.append('file', this.officialDoc);
+    this.formData.append('type', 'official');
     this.requestHttp.uploadOfficialLetter(this.formData).subscribe({
       next: () => {
         this.notification.successNotice('Official Letter Uploaded Successfully');

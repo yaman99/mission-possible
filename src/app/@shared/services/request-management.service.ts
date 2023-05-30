@@ -36,7 +36,7 @@ export class RequestManagementHttpService {
   uploadOfficialLetter(payload: FormData): Observable<any> {
     return this.http.post<any>(`${API_URL}/ApplicationFormRequest/upload-official-letter`, payload);
   }
-  deleteInternshipApplicationRequest(payload: DeleteRequest): Observable<any> {
+  deleteRequest(payload: DeleteRequest): Observable<any> {
     return this.http.post<any>(`${API_URL}/ApplicationFormRequest/delete-request`, payload);
   }
   addNewApplicationRequest(payload: any): Observable<any> {
