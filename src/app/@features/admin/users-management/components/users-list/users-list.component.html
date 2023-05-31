@@ -79,9 +79,12 @@
               <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
                 User Type
               </th>
+              <th class="min-w-125px sorting" rowspan="1" colspan="1" style="width: 224.922px">
+                Actions
+              </th>
             </tr>
           </thead>
-          <tbody class="fw-semibold text-gray-600">
+          <tbody class="fw-semibold text-gray-600 ">
             <tr *ngFor="let user of users$ | async; let i = index">
               <td>
                 {{ i + 1 }}
@@ -89,13 +92,13 @@
               <td>
                 {{ user.email }}
               </td>
-              <td>
+              <td >
                 {{ user.fullName }}
               </td>
               <td>
                 {{ user.userType }}
               </td>
-              <td class="text-end">
+              <td>
                 <div ngbDropdown container="body">
                   <button
                     type="button"
@@ -109,8 +112,8 @@
                     data-kt-menu="true"
                     ngbDropdownMenu
                   >
-                    <div class="menu-item px-3">
-                      <a class="menu-link px-3" (click)="deleteUser(user.id)"> Delete </a>
+                    <div class="menu-item px-3 ">
+                      <a class="badge badge-light-danger menu-link px-3" (click)="deleteUser(user.id)"> Delete </a>
                     </div>
                   </div>
                 </div>

@@ -73,7 +73,10 @@
                   <p>Not Uploaded</p>
                 </ng-template>
               </td>
-              <td>{{request.status}}</td>
+              <td>
+                <span style="font-family:'Courier New', Courier, monospace; font-size: inherit;" [ngClass]="getStatusBadgeClass(request.status)">{{ request.status }}</span>
+                {{request.status}}
+              </td>
               <td>
                 <ng-container *ngIf="request.sgkUrl; else sgkNull;">
                   <a [href]="baseUrl + request.sgkUrl">Download Sgk Form </a>

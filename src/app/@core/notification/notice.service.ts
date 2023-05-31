@@ -44,7 +44,7 @@ export class NoticeService {
   }
   private errorNotice(message: string, title: string) {
     return Swal.fire({
-      title: title,
+      title: 'Error',
       html: message,
       icon: 'error',
     });

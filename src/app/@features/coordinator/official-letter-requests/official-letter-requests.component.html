@@ -109,12 +109,12 @@
                         #fileUpload
                       />
 
-                      <a class="menu-link px-3" (click)="fileUpload.click()">
+                      <a class="badge badge-light-success menu-link px-3" (click)="fileUpload.click()">
                         Upload Official Letter
                       </a>
                     </div>
                     <div class="menu-item px-3" *ngIf="!(request.status === 'rejected')">
-                      <a class="menu-link px-3" (click)="updateStatus('rejected', request.id)">
+                      <a class="badge badge-light-danger menu-link px-3" (click)="updateStatus('rejected', request.id)">
                         Reject
                       </a>
                     </div>
