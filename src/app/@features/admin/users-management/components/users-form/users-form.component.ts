@@ -57,19 +57,14 @@ export class UsersFormComponent implements OnInit {
     },
     {
       id: '5',
-      fullName: 'yaman',
-      email: 'rakolee1999sawan@gmail.com',
+      fullName: 'MUHAMMED DELE CAREER CENTER',
+      email: 'muhammad_dele@icloud.com',
       userType: this.userType.coordinator,
     },
+
     {
       id: '6',
-      fullName: 'yaman 2',
-      email: 'yaman.sawandev@gmail.com',
-      userType: this.userType.student,
-    },
-    {
-      id: '7',
-      fullName: 'Muhammed Dele',
+      fullName: 'Muhammed Dele coordinator',
       email: 'muhammad.dele@gmail.com',
       userType: this.userType.coordinator,
     },
@@ -82,7 +77,7 @@ export class UsersFormComponent implements OnInit {
     private fb: FormBuilder,
     private stateBus: IBus,
     private userServ: UsersManagementHttpService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.initForm();

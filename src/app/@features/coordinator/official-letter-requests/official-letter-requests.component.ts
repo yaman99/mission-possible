@@ -61,4 +61,24 @@ export class OfficialLetterRequestsComponent implements OnInit {
       },
     });
   }
+  getStatusBadgeClass(status: string) {
+    let badgeClass = '';
+
+    switch (status) {
+      case 'pending':
+        badgeClass = 'badge badge-warning';
+        break;
+      case 'approved':
+        badgeClass = 'badge badge-success';
+        break;
+      case 'completed':
+        badgeClass = 'badge badge-secondary';
+        break;
+      case 'rejected':
+        badgeClass = 'badge badge-danger';
+        break;
+    }
+
+    return badgeClass;
+  }
 }

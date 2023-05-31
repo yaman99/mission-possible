@@ -75,7 +75,7 @@
               </td>
               <td>
                 <span style="font-family:'Courier New', Courier, monospace; font-size: inherit;" [ngClass]="getStatusBadgeClass(request.status)">{{ request.status }}</span>
-                {{request.status}}
+
               </td>
               <td>
                 <ng-container *ngIf="request.sgkUrl; else sgkNull;">
@@ -101,12 +101,12 @@
                     ngbDropdownMenu
                   >
                     <div class="menu-item px-3">
-                      <a class="menu-link px-3" (click)="updateStatus('approved', request.id)">
+                      <a class=" badge badge-light-success menu-link px-3" (click)="updateStatus('approved', request.id)">
                         Approve
                       </a>
                     </div>
                     <div class="menu-item px-3">
-                      <a class="menu-link px-3" (click)="updateStatus('rejected', request.id)">
+                      <a class="badge badge-light-danger menu-link px-3" (click)="updateStatus('rejected', request.id)">
                         Reject
                       </a>
                     </div>

@@ -85,7 +85,9 @@
               </td>
 
               <td>{{ request.internshipType }}</td>
-              <td>{{ request.status }}</td>
+              <td >
+                <span style="font-family:'Courier New', Courier, monospace; font-size: inherit;" [ngClass]="getStatusBadgeClass(request.status)">{{ request.status }}</span>
+              </td>
               <td>
                 <div ngbDropdown container="body">
                   <button
